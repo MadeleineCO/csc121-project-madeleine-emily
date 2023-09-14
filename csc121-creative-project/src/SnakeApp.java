@@ -1,101 +1,32 @@
 
+import processing.core.*;
+import processing.event.KeyEvent; 
+
 /**
- * Represents an interactive application where a snake eats an apple 
- * to grow longer. The user must use the arrow keys to control the snake.
+ * Provides the scaffolding to launch a Processing application
  */
-interface IWorld {
-	
+public class SnakeApp extends PApplet {
+    SnakeWorld w;
+    
+    public void settings() {
+        this.size(600, 600);
+    }
+    
+    public void setup() {
+        w = new SnakeWorld(width/2, height/2, "right");
+    }
+    
+    public void draw() {
+        w = w.update();
+        w.draw(this);
+    }
+    
+    public void keyPressed(KeyEvent kev) {
+        w = w.keyPressed(kev);
+    }
+    
+
+    public static void main(String[] args) {
+        PApplet.runSketch(new String[] { "SnakeApp" }, new SnakeApp());
+    }
 }
-
-/* represents a coordinate on the game board */
-class Posn {
-	 double x;
-	 double y;
-	 
-	 Posn(double x, double y) 
-	 {
-	    this.x = x;
-	    this.y = y;
-	  }
-
-	   /* TEMPLATE
-	  public ??? posnMethod(...) {
-	    ... this.x      -- double
-	    ... this.y      -- double
-	    
-	    ... this.inRange(Posn, double, double)  -- boolean
-	  }    
-	   */
-
-}
-
-/* represents a snake in the world */
-class Snake implements IWorld 
-{
-	Posn p; 
-	int length; 
-	String direction; 
-	
-	Snake(Posn p, int length, String direction)
-	{
-		this.p = p; 
-		this.length = length; 
-		this.direction = direction; 
-	}
-	 /* TEMPLATE
-	  public ??? snakeMethod(...) {
-	    ... this.p     -- Posn
-	    ... this.length      -- int
-	    ... this.direction   -- String 
-	  }    
-	   */
-}
-
-/*represents an apple in the world */
-class Apple implements IWorld 
-{
-	Posn p; 
-	boolean ate; 
-	
-	Apple(Posn p, boolean ate) 
-	{
-		this.p = p;
-		this.ate = ate;
-	}
-	/* TEMPLATE
-	  public ??? appleMethod(...) {
-	    ... this.p     -- Posn
-	    ... this.ate     -- boolean 
-	  }    
-	   */
-}
-
-
-
-/** contains all of the wall borders */ 
-class Border 
-{
-	int topwallY; 
-	int rightwallX; 
-	int botWallY; 
-	int leftWallX;
-	
-	Border(int topwallY, int rightwallX, int botWallY, int leftWallX) {
-		this.topwallY = topwallY;
-		this.rightwallX = rightwallX;
-		this.botWallY = botWallY;
-		this.leftWallX = leftWallX;
-	}
-	
-	/* TEMPLATE
-	  public ??? appleMethod(...) {
-	    ... this.topWallY    -- int
-	    ... this.rightWallX   -- int
-	    ... this.botWallY    -- int
-	    ... this.leftWallX   -- int
-	  }    
-	   */	
-}
-
-
-

@@ -62,6 +62,10 @@ public class SnakeWorld
             return this;
         }
     }
+	
+	public String toString() {
+        return "[" + x + ", " + y + "]";
+    }
 	    
 	    
 	
