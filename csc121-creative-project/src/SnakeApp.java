@@ -6,10 +6,14 @@
 interface IWorld {
 	
 }
+
+/* represents a coordinate on the game board */
 class Posn {
 	 double x;
 	 double y;
-	 Posn(double x, double y) {
+	 
+	 Posn(double x, double y) 
+	 {
 	    this.x = x;
 	    this.y = y;
 	  }
@@ -25,6 +29,7 @@ class Posn {
 
 }
 
+/* represents a snake in the world */
 class Snake implements IWorld 
 {
 	Posn p; 
@@ -46,6 +51,7 @@ class Snake implements IWorld
 	   */
 }
 
+/*represents an apple in the world */
 class Apple implements IWorld 
 {
 	Posn p; 
