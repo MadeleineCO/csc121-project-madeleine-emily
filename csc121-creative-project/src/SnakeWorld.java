@@ -7,12 +7,16 @@ public class SnakeWorld
 	double x; 
 	double y; 
 	String direction; 
+	 
 	
 	 public SnakeWorld(double x, double y, String direction) {
 	        this.x = x;
 	        this.y = y; 
 	        this.direction = direction; 
+	        
+	        
 	    }
+
 	 
 	 /**
 	 * Renders a picture of the drop on the window
