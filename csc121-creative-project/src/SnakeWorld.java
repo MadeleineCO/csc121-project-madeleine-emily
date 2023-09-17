@@ -1,78 +1,102 @@
+import java.util.Objects;
+
 import processing.core.PApplet; 
 import processing.event.KeyEvent; 
 
 public class SnakeWorld 
 {
-	/** the position and direction of the snake */ 
-	double x; 
-	double y; 
-	String direction; 
-	 
-	
-	 public SnakeWorld(double x, double y, String direction) {
-	        this.x = x;
-	        this.y = y; 
-	        this.direction = direction; 
-	        
-	        
-	    }
+    Snake slimy;
+    Apple a;
 
-	 
-	 /**
-	 * Renders a picture of the drop on the window
-	 */
-	public PApplet draw(PApplet s) 
-	{
-		s.background(27, 108, 32);
-	    s.fill(64, 227, 73);
-	    s.square((int) this.x, (int) this.y, 30);
-	    return s;
-	}
-	
-	public SnakeWorld update() {
-        if (this.y > 60 || this.y < 540 || this.x < 540 || this.x > 60) {
-        	if (this.direction.equals("up"))
-        	{
-        		return new SnakeWorld(this.x, this.y - .5, this.direction);
-        	}
-        	if (this.direction.equals("down"))
-        	{
-        		return new SnakeWorld(this.x, this.y + .5, this.direction);
-        	}
-        	if (this.direction.equals("right"))
-        	{
-        		return new SnakeWorld(this.x + .5, this.y, this.direction);
-        	}
-        	
-        	else //assuming direction is "left"
-        	{
-        		return new SnakeWorld(this.x - .5, this.y, this.direction);
-        	}
-        } else {
-            return this;
-        }
+    static Posn UP = new Posn(0, -30);
+    static Posn DOWN = new Posn(0, 30);
+    static Posn LEFT = new Posn(-30, 0);
+    static Posn RIGHT = new Posn(30, 0);
+    
+    static int DELAY_AMOUNT = 25;
+
+    public SnakeWorld(Snake slimy, Apple a) {
+        this.slimy = slimy;
+        this.a = a;
     }
-	
-	public SnakeWorld keyPressed(KeyEvent kev) {
+
+    /**
+     * Renders a picture of the drop on the window
+     */
+    public PApplet draw(PApplet w) 
+    {
+        w.background(27, 108, 32);
+        this.slimy.draw(w);
+        return w;
+    }
+
+    public SnakeWorld update() {
+        //if (this.y > 60 || this.y < 540 || this.x < 540 || this.x > 60) {
+            return new SnakeWorld(this.slimy.move(), this.a);
+            /*
+            if (this.direction.equals("up"))
+            {
+                return new SnakeWorld(this.x, this.y - .5, this.direction);
+            }
+            if (this.direction.equals("down"))
+            {
+                return new SnakeWorld(this.x, this.y + .5, this.direction);
+            }
+            if (this.direction.equals("right"))
+            {
+                return new SnakeWorld(this.x + .5, this.y, this.direction);
+            }
+
+            else //assuming direction is "left"
+            {
+                return new SnakeWorld(this.x - .5, this.y, this.direction);
+            }
+            */
+        //} else {
+        //    return this;
+        //}
+    }
+
+    public SnakeWorld keyPressed(KeyEvent kev) {
         if (kev.getKeyCode() == PApplet.UP) {
-            return new SnakeWorld(this.x, this.y, "up");
+            return new SnakeWorld(this.slimy.changeDirection(this.UP), this.a);
         } else if (kev.getKeyCode() == PApplet.DOWN) {
-            return new SnakeWorld(this.x, this.y, "down");
+            return new SnakeWorld(this.slimy.changeDirection(this.DOWN), this.a);
         } else if (kev.getKeyCode() == PApplet.RIGHT) {
-            return new SnakeWorld(this.x, this.y, "right");
+            return new SnakeWorld(this.slimy.changeDirection(this.RIGHT), this.a);
         } else if (kev.getKeyCode() == PApplet.LEFT) {
-            return new SnakeWorld(this.x, this.y, "left");
+            return new SnakeWorld(this.slimy.changeDirection(this.LEFT), this.a);
         } else {
             return this;
         }
     }
-	
-	public String toString() {
-        return "[" + x + ", " + y + "]";
+
+    
+    @Override
+    public String toString() {
+        return "SnakeWorld [slimy=" + slimy + ", a=" + a + ", UP=" + UP + ", DOWN=" + DOWN + ", LEFT=" + LEFT
+                + ", RIGHT=" + RIGHT + "]";
     }
-	    
-	    
-	
-	
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a, slimy);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SnakeWorld other = (SnakeWorld) obj;
+        return Objects.equals(a, other.a) && Objects.equals(slimy, other.slimy);
+    }
+
+
+
+
 
 }

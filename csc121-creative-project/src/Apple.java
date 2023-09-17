@@ -1,9 +1,11 @@
+import java.util.Objects;
+
 import processing.core.PApplet; 
 
 /* 
  * Represents an apple in the Snake game
  */
-public class AppleWorld {
+public class Apple {
 
 	
 	/** the position of the apple */
@@ -11,7 +13,7 @@ public class AppleWorld {
 	double y;
 	
 	
-	public AppleWorld(double x, double y) {
+	public Apple(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -51,10 +53,10 @@ public class AppleWorld {
 	
 	
 	/* if the snake eats the apple, then the apple updates to a random location */
-	public AppleWorld update(SnakeWorld s) {
+	public Apple update(Snake s) {
 		
-		if (this.inRange(s.x, s.y, 30)) {
-			return new AppleWorld(Math.random() * 601, Math.random() * 601);
+		if (this.inRange(s.loc.getX(), s.loc.getY(), 30)) {
+			return new Apple(Math.random() * 601, Math.random() * 601);
 		}
 		else {
 			return this;
@@ -147,6 +149,24 @@ public class AppleWorld {
 	public String toString() {
 		return "[" + x + ", " + y + "]";
 	}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Apple other = (Apple) obj;
+        return Double.doubleToLongBits(x) == Double.doubleToLongBits(other.x)
+                && Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y);
+    }
 	
 	
 	

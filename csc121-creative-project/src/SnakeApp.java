@@ -7,26 +7,19 @@ import processing.event.KeyEvent;
  */
 public class SnakeApp extends PApplet {
     SnakeWorld w;
-    AppleWorld a;
     
     public void settings() {
         this.size(600, 600);
     }
     
     public void setup() {
-        w = new SnakeWorld(width/2, height/2, "right");
-        a = new AppleWorld(Math.random() * 601, Math.random() * 601);
+        w = new SnakeWorld(new Snake(new Posn(width/2, height/2)),
+                            new Apple(Math.random() * 601, Math.random() * 601));
     }
     
     public void draw() {
     	w = w.update();
-        a = a.update(w);
-        
         w.draw(this);
-        a.draw(this);
-        
-
-        a = a.update(w);
     }
     
     public void keyPressed(KeyEvent kev) {
