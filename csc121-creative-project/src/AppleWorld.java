@@ -114,8 +114,8 @@ public class AppleWorld {
 		{
 			return true;
 		}
-		else if ((x >= this.x || x + 30 <= this.x)
-				&& (y >= this.y || y + 30 <= this.y))
+		else if ((x >= this.x && x + size <= this.x)
+				&& (y >= this.y && y + size <= this.y))
 			return true; 
 		
 		
