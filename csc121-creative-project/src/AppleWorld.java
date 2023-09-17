@@ -88,43 +88,52 @@ public class AppleWorld {
 	
 	
 	//if top left corner of snake is within the apple
-	public boolean inRange(double x, double y, int size) {	
-		if (x + size >= this.x &&                   //checks if snake point is within the side boundaries
-				x + size <= this.x + size
-				&&
-			y >= this.y &&  y <= this.y + size)    //checks if the snake point is within the top/bottom boundaries
+	public boolean inRange(double x, double y, int size) 
+	{	
+		if (x + size >= this.x && this.x + 30 >= x) // checks snake coming from left side and if it hits the left, top corner of apple 
 		{
-			return true;
-		}
-		
-		else if (x - size >= this.x &&                   //checks if snake point is within the side boundaries
-					x - size <= this.x + size
-					&&
-				y >= this.y &&  y <= this.y + size) 
-		{
-			
-			return true;
-		}
-		
-		
-		else if (x >= this.x &&                   //checks if snake point is within the side boundaries
-					x <= this.x + size
-					&&
-				y + size >= this.y &&  y + size <= this.y - size)          //checks if the snake point is within the top/bottom boundaries
-		{
-			return true;
-		}
-		
-		
-		
-		
-		else {
-			return false;
-		}
-			
-		
-		
+			return true; 
+		} else if (y <= this.y + size && this.y <= y) // checks snake coming from bottom and if it hits the left, bottom corner of apple 
+			{
+				return true;
+			} else if (x <= this.x + size && x >= this.x)// checks snake coming from right side and if it hits the right, top corner of apple 
+				{
+					return true; 
+				} else if (y + size >= this.y && y + size <= this.y + size)// checks snake coming from top and if it hits the left, top corner of apple 
+					{
+						return true; 
+					} else 
+						{
+							return false; 
+						}
 	}
+				
+//		if (x + size >= this.x &&                   //checks if snake point is within the side boundaries
+//				x + size <= this.x + size
+//				&&
+//			y >= this.y &&  y <= this.y + size)    //checks if the snake point is within the top/bottom boundaries
+//		{
+//			return true;
+//		}
+//		
+//		else if (x - size >= this.x &&                   //checks if snake point is within the side boundaries
+//					x - size <= this.x + size
+//					&&
+//				y >= this.y &&  y <= this.y + size) 
+//		{
+//			
+//			return true;
+//		}
+//		
+//		
+//		else if (x >= this.x &&                   //checks if snake point is within the side boundaries
+//					x <= this.x + size
+//					&&
+//				y + size >= this.y &&  y + size <= this.y + size)          //checks if the snake point is within the top/bottom boundaries
+//		{
+//			return true;
+//		}
+
 		
 	
 	public String toString() {
