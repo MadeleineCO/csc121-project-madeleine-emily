@@ -110,13 +110,10 @@ public class AppleWorld {
 		else if (x >= this.x &&                   //checks if snake point is within the side boundaries
 					x <= this.x + size
 					&&
-				y + size >= this.y &&  y + size <= this.y + size)          //checks if the snake point is within the top/bottom boundaries
+				y + size >= this.y &&  y + size <= this.y - size)          //checks if the snake point is within the top/bottom boundaries
 		{
 			return true;
 		}
-		else if ((x >= this.x && x + size <= this.x)
-				&& (y >= this.y && y + size <= this.y))
-			return true; 
 		
 		
 		
