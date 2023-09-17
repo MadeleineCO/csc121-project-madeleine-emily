@@ -90,16 +90,24 @@ public class AppleWorld {
 	//if top left corner of snake is within the apple
 	public boolean inRange(double x, double y, int size) 
 	{	
-		if (x + size >= this.x && this.x + 30 >= x) // checks snake coming from left side and if it hits the left, top corner of apple 
+		if (x + size >= this.x && this.x + size >= x
+				&& 
+				y >= this.y && y <= this.y + 30) // checks snake coming from left side and if it hits the left, top corner of apple 
 		{
 			return true; 
-		} else if (y <= this.y + size && this.y <= y) // checks snake coming from bottom and if it hits the left, bottom corner of apple 
+		} else if (y <= this.y + size && this.y <= y
+					&& 
+					x >= this.x && x <= this.x + size) // checks snake coming from bottom and if it hits the left, bottom corner of apple 
 			{
 				return true;
-			} else if (x <= this.x + size && x >= this.x)// checks snake coming from right side and if it hits the right, top corner of apple 
+			} else if (x <= this.x + size && x >= this.x
+						&& 
+						y >= this.y && y <= this.y + size)// checks snake coming from right side and if it hits the right, top corner of apple 
 				{
 					return true; 
-				} else if (y + size >= this.y && y + size <= this.y + size)// checks snake coming from top and if it hits the left, top corner of apple 
+				} else if (y + size >= this.y && y + size <= this.y + size
+							&& 
+							x >= this.x && x + size <= this.x + size)// checks snake coming from top and if it hits the left, top corner of apple 
 					{
 						return true; 
 					} else 
