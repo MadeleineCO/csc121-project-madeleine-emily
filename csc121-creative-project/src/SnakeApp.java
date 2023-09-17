@@ -24,6 +24,9 @@ public class SnakeApp extends PApplet {
         
         w.draw(this);
         a.draw(this);
+        
+
+        a = a.update(w);
     }
     
     public void keyPressed(KeyEvent kev) {

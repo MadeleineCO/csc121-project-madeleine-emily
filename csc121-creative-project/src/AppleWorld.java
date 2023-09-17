@@ -54,7 +54,7 @@ public class AppleWorld {
 	public AppleWorld update(SnakeWorld s) {
 		
 		if (this.inRange(s.x, s.y, 30)) {
-			return new AppleWorld(100, 100);
+			return new AppleWorld(Math.random() * 601, Math.random() * 601);
 		}
 		else {
 			return this;
