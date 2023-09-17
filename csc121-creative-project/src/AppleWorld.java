@@ -89,18 +89,18 @@ public class AppleWorld {
 	
 	//if top left corner of snake is within the apple
 	public boolean inRange(double x, double y, int size) {	
-		if (x + 30 >= this.x &&                   //checks if snake point is within the side boundaries
-				x + 30 <= this.x + 30
+		if (x + size >= this.x &&                   //checks if snake point is within the side boundaries
+				x + size <= this.x + size
 				&&
-			y >= this.y &&  y <= this.y + 30)    //checks if the snake point is within the top/bottom boundaries
+			y >= this.y &&  y <= this.y + size)    //checks if the snake point is within the top/bottom boundaries
 		{
 			return true;
 		}
 		
-		else if (x - 30 >= this.x &&                   //checks if snake point is within the side boundaries
-					x - 30 <= this.x + 30
+		else if (x - size >= this.x &&                   //checks if snake point is within the side boundaries
+					x - size <= this.x + size
 					&&
-				y >= this.y &&  y <= this.y + 30) 
+				y >= this.y &&  y <= this.y + size) 
 		{
 			
 			return true;
@@ -108,12 +108,15 @@ public class AppleWorld {
 		
 		
 		else if (x >= this.x &&                   //checks if snake point is within the side boundaries
-					x <= this.x + 30
+					x <= this.x + size
 					&&
-				y + 30 >= this.y &&  y + 30 <= this.y + 30)          //checks if the snake point is within the top/bottom boundaries
+				y + size >= this.y &&  y + size <= this.y + size)          //checks if the snake point is within the top/bottom boundaries
 		{
 			return true;
 		}
+		else if ((x >= this.x || x + 30 <= this.x)
+				&& (y >= this.y || y + 30 <= this.y))
+			return true; 
 		
 		
 		
