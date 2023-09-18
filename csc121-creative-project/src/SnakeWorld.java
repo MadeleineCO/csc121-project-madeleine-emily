@@ -27,6 +27,7 @@ public class SnakeWorld
     {
         w.background(27, 108, 32);
         this.slimy.draw(w);
+        this.a.draw(w);
         return w;
     }
 
