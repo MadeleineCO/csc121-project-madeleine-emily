@@ -49,7 +49,7 @@ public class Snake {
     
     /** ... */
     Snake changeDirection(Posn newDir) {
-        return new Snake(this.loc, newDir, SnakeWorld.DELAY_AMOUNT);
+        return new Snake(this.loc, newDir, this.moveDelay);
     }
 
     
