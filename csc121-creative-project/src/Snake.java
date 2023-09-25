@@ -41,8 +41,21 @@ public class Snake {
             return false;
         } else {
             Posn newLoc = this.loc.translate(this.dir);
-            if (newLoc.getX() >= 570) { return true; }
-            else { return false; }
+            if (newLoc.getX() >= 570) {         //right wall
+            	return true;
+            } 
+            else if (newLoc.getY() <= 0) {    //top wall
+            	return true;
+            } 
+            else if (newLoc.getX() <= 0) {    //left wall
+            	return true;
+            } 
+            else if (newLoc.getY() >= 570) {
+            	return true;                    //bottom wall
+            } 
+            else { 
+            	return false;
+            	}
         }
     }
     
