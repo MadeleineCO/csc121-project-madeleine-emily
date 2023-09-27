@@ -31,11 +31,12 @@ public class SnakeWorld
         return w;
     }
     
-    
+    /* updates the SnakeWorld by moving the snake and the apple */
     public SnakeWorld update() {
     	return new SnakeWorld(this.slimy.move(), this.a.move(slimy));
     }
 
+    /* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */
     public SnakeWorld keyPressed(KeyEvent kev) {
         if (kev.getKeyCode() == PApplet.UP) {
             return new SnakeWorld(this.slimy.changeDirection(this.UP), this.a);
