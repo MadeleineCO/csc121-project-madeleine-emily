@@ -54,8 +54,8 @@ public class Apple {
 
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public Apple update(Snake s) {
-		
 		if (this.hitBySnake(s.loc)) {
+			System.out.println("HIT!");
 			return new Apple(
 					new Posn((float) Math.random() * 571,
 							(float) Math.random() * 571));

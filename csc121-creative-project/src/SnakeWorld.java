@@ -31,51 +31,9 @@ public class SnakeWorld
         return w;
     }
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     public SnakeWorld update() {
-        //if (this.y > 60 || this.y < 540 || this.x < 540 || this.x > 60) {
-            return new SnakeWorld(this.slimy.move(), this.a);
-            /*
-            if (this.direction.equals("up"))
-            {
-                return new SnakeWorld(this.x, this.y - .5, this.direction);
-            }
-            if (this.direction.equals("down"))
-            {
-                return new SnakeWorld(this.x, this.y + .5, this.direction);
-            }
-            if (this.direction.equals("right"))
-            {
-                return new SnakeWorld(this.x + .5, this.y, this.direction);
-            }
-
-            else //assuming direction is "left"
-            {
-                return new SnakeWorld(this.x - .5, this.y, this.direction);
-            }
-            */
-        //} else {
-        //    return this;
-        //}
+    	return new SnakeWorld(this.slimy.move(), this.a.move(slimy));
     }
 
     public SnakeWorld keyPressed(KeyEvent kev) {
