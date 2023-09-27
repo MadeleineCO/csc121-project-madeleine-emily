@@ -3,16 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class SnakeWorldTest {
-
-	//SnakeWorld s = new SnakeWorld(300, 300, "up");
-	
-	//SnakeWorld s2 = new SnakeWorld(300, 330, "up");
-	
-	//SnakeWorld s3 = new SnakeWorld(330, 300, "up");
-	
-	//SnakeWorld s4 = new SnakeWorld(300, 270, "up");
-	
-	//SnakeWorld s5 = new SnakeWorld(270, 330, "up");
 	
     Snake sl1 = new Snake(new Posn(300, 300), SnakeWorld.UP, 0);
     Snake sl2 = new Snake(new Posn(300, 300), SnakeWorld.UP, 57);
