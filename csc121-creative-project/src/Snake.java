@@ -65,7 +65,10 @@ public class Snake {
         return new Snake(this.loc, newDir, this.moveDelay);
     }
 
-    
+    /* returns the snakes position */
+    public Posn getLoc() {
+    	return loc;
+    }
     
     @Override
     public int hashCode() {

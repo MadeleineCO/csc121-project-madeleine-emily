@@ -14,7 +14,10 @@ public class SnakeApp extends PApplet {
     
     public void setup() {
         w = new SnakeWorld(new Snake(new Posn(width/2, height/2)),
-                            new Apple(Math.random() * (width + 1), Math.random() * (width + 1)));
+                            new Apple(
+                            		new Posn(
+                            		(float) Math.random() * (width + 1), 
+                            		(float) Math.random() * (width + 1))));
     }
     
     public void draw() {

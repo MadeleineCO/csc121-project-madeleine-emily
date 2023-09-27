@@ -18,7 +18,8 @@ class SnakeWorldTest {
     Snake sl2 = new Snake(new Posn(300, 300), SnakeWorld.UP, 57);
     Snake sl3 = new Snake(new Posn(570, 300), SnakeWorld.RIGHT, 0);
     
-	Apple a = new Apple(300, 300);
+	Apple a = new Apple(new Posn(300, 300));
+	Apple a2 = new Apple(new Posn(50, 50));
 	
 	@Test
 	void testSnake() {
@@ -35,16 +36,9 @@ class SnakeWorldTest {
 	
 	
 	@Test
-	void testAppleWorldUpdate() {
-		//assertEquals(new AppleWorld(100, 100), a.update(s)); //works - snake on top of apple
-		
-		//assertEquals(new AppleWorld(100, 100), a.update(s2)); //works - checks bottom line
-		
-		//assertEquals(new AppleWorld(100, 100), a.update(s3));  //works - checks right line
-		
-		//assertEquals(new AppleWorld(100, 100), a.update(s4)); //works   - checks top line
-		
-		//assertEquals(new AppleWorld(100, 100), a.update(s5));   //works - checks left line
+	void testHitBySnake() {
+		assertFalse(a.hitBySnake(new Posn(0,0)));
+		assertTrue(a2.hitBySnake(new Posn(60,60)));
 	}
 
 }

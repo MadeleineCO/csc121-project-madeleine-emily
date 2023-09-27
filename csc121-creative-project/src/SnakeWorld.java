@@ -30,7 +30,27 @@ public class SnakeWorld
         this.a.draw(w);
         return w;
     }
+    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public SnakeWorld update() {
         //if (this.y > 60 || this.y < 540 || this.x < 540 || this.x > 60) {
             return new SnakeWorld(this.slimy.move(), this.a);
