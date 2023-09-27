@@ -18,7 +18,7 @@ public class Snake {
     }
     
 
-    
+    /* draws the snake as a green square */
     PApplet draw(PApplet c) {
         c.fill(64, 227, 73);
         c.square(this.loc.getX(), this.loc.getY(), 30);
@@ -60,7 +60,7 @@ public class Snake {
     }
     
     
-    /** ... */
+    /** changes the direction that the snake is moving to the given direction */
     Snake changeDirection(Posn newDir) {
         return new Snake(this.loc, newDir, this.moveDelay);
     }

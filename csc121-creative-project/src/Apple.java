@@ -18,7 +18,7 @@ public class Apple {
 		this.size = 30;
 	}
 
-	/* draws the apple */
+	/* draws the apple as a red square */
 	public PApplet draw(PApplet a) {
 		a.fill(255, 0, 0);
 		a.square((int) this.loc.getX(), (int) this.loc.getY(), size);
