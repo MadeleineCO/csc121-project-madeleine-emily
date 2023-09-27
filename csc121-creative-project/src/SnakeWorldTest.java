@@ -39,6 +39,9 @@ class SnakeWorldTest {
 	void testHitBySnake() {
 		assertFalse(a.hitBySnake(new Posn(0,0)));
 		assertTrue(a2.hitBySnake(new Posn(60,60)));
+		assertTrue(a2.hitBySnake(new Posn(51, 51)));
+		assertFalse(a2.hitBySnake(new Posn(51, 81)));
+		assertTrue(a2.hitBySnake(new Posn(79, 79)));
 	}
 
 }
