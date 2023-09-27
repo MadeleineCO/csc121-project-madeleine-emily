@@ -28,10 +28,10 @@ public class Apple {
 
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public Apple move(Snake s) {
-		if (this.hitBySnake(s.loc) || 
-				this.hitBySnake(s.loc.translate(new Posn(0, 30))) ||
-				this.hitBySnake(s.loc.translate(new Posn(0, 30))) ||
-				this.hitBySnake(s.loc.translate(new Posn(30, 30)))) 
+		if (this.hitBySnake(s.getLoc()) || 
+				this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
+				this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
+				this.hitBySnake(s.getLoc().translate(new Posn(30, 30)))) 
 		{
 			return new Apple(
 					new Posn((float) Math.random() * 571,
