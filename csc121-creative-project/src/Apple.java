@@ -25,37 +25,14 @@ public class Apple {
 		return a;
 	}
 
-	/* if the snake eats the apple, then the apple updates to a random location */
-	//	public AppleWorld update(SnakeWorld s) {
-	//		
-	//		if (this.inRange(s.x, s.y, 30))
-	//		{
-	//			return new AppleWorld(Math.random() * 601, Math.random() * 601);
-	//		} 
-	//		
-	//		else if (this.inRange(s.x + 30, s.y, 30)) {
-	//			return new AppleWorld(Math.random() * 601, Math.random() * 601);
-	//		}
-	//		
-	//		else if (this.inRange(s.x, s.y + 30, 30)) {
-	//			return new AppleWorld(Math.random() * 601, Math.random() * 601);
-	//		}
-	//		
-	//		else if (this.inRange(s.x + 30, s.y + 30, 30)) {
-	//			return new AppleWorld(Math.random() * 601, Math.random() * 601);
-	//		}
-	//		
-	//		else {
-	//			return this;
-	//		}
-	//		
-	//	}
-
 
 	/* if the snake eats the apple, then the apple updates to a random location */
-	public Apple update(Snake s) {
-		if (this.hitBySnake(s.loc)) {
-			System.out.println("HIT!");
+	public Apple move(Snake s) {
+		if (this.hitBySnake(s.loc) || 
+				this.hitBySnake(s.loc.translate(new Posn(0, 30))) ||
+				this.hitBySnake(s.loc.translate(new Posn(0, 30))) ||
+				this.hitBySnake(s.loc.translate(new Posn(30, 30)))) 
+		{
 			return new Apple(
 					new Posn((float) Math.random() * 571,
 							(float) Math.random() * 571));
