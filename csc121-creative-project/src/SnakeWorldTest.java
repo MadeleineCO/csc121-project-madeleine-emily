@@ -32,6 +32,8 @@ class SnakeWorldTest {
 		assertTrue(a2.hitBySnake(new Posn(51, 51)));
 		assertFalse(a2.hitBySnake(new Posn(51, 81)));
 		assertTrue(a2.hitBySnake(new Posn(79, 79)));
+		assertFalse(a2.hitBySnake(new Posn(60, 40)));
+		assertFalse(a2.hitBySnake(new Posn(60, 90)));
 	}
 
 }
