@@ -34,8 +34,8 @@ public class Apple {
 				this.hitBySnake(s.getLoc().translate(new Posn(30, 30)))) 
 		{
 			return new Apple(
-					new Posn((float) Math.random() * 571,
-							(float) Math.random() * 571));
+					new Posn((float) Math.random() * 541,
+							(float) Math.random() * 541));
 		}
 		else {
 			return this;
