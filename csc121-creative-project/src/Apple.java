@@ -54,11 +54,11 @@ public class Apple {
 
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public Apple update(Snake s) {
-
+		
 		if (this.hitBySnake(s.loc)) {
 			return new Apple(
-					new Posn((float) Math.random() * 601,
-							(float) Math.random() * 601));
+					new Posn((float) Math.random() * 571,
+							(float) Math.random() * 571));
 		}
 		else {
 			return this;
@@ -67,10 +67,7 @@ public class Apple {
 	}
 
 
-
-
-
-	//deterimines if the snake has hit the apple by comparing the apple's lacation to the snake's location
+	//deterimines if the snake has hit the apple 
 	public boolean hitBySnake(Posn sLoc) 
 	{	
 		return sLoc.inRange(this.loc, this.size, this.size);
