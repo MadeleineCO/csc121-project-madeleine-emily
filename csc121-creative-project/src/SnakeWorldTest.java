@@ -14,7 +14,7 @@ class SnakeWorldTest {
 	LoS los1 = new LoS(sl1, null);
 	LoS los1v2 = new LoS(sl1, new LoS(sl2, null)); 
 	LoS los1v3 = new LoS(sl2, new LoS(sl1, null));
-	LoS los2 = los1;
+	LoS los2 = new LoS(sl1, new LoS(sl2, new LoS(sl3, null)));
 	
 	@Test
 	void testSnake() {
@@ -46,13 +46,15 @@ class SnakeWorldTest {
 		assertEquals(los1, new LoS(sl1, null));
 		assertEquals(los1v2, new LoS(sl1, new LoS(sl2, null)));
 		
-		los1.addBoxInList(los1, sl2);
-		assertEquals(los1, new LoS(sl1, new LoS(sl2, null))); //fails
+		los1 = los1.addBoxInList(los1, sl2);
+		assertEquals(los1, new LoS(sl1, new LoS(sl2, null))); 
 		
-		assertFalse(los1.equals(new LoS(sl2, new LoS(sl1, null))));
+		assertFalse(los1.equals(new LoS(sl2, new LoS(sl1, null))));		
+		assertFalse(los1.equals(new LoS(sl1, null)));  
 		
+		los2 = los2.addBoxInList(los2, sl1);
+		assertEquals(los2, new LoS(sl1, new LoS(sl2, new LoS(sl3, new LoS(sl1, null)))));
 		
-		assertFalse(los1.equals(new LoS(sl1, null)));  //fails
 		
 		
 	}
