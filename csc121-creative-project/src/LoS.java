@@ -45,10 +45,10 @@ class LoS {
 	
 	/* adds a snake box onto the back of the list */
 	public LoS addBoxInList(LoS s, Snake slimy) {
-		if (rest == null){
-			return new LoS(slimy, rest);
+		if (rest == null) {
+			return new LoS(first, new LoS(slimy, null));
 		} else {
-			return new LoS(first, addBoxInList(s, slimy));
+			return new LoS(first, addBoxInList(rest, slimy));
 		}
 	}
 
