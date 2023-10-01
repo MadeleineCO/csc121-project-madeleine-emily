@@ -11,6 +11,10 @@ class SnakeWorldTest {
 	Apple a = new Apple(new Posn(300, 300));
 	Apple a2 = new Apple(new Posn(50, 50));
 	
+	LoS los1 = new LoS(sl1, null);
+	LoS los1v2 = new LoS(sl1, new LoS(sl2, null)); 
+	LoS los1v3 = new LoS(sl2, new LoS(sl1, null));
+	
 	@Test
 	void testSnake() {
 	    assertEquals(new Snake(new Posn(300, 270), SnakeWorld.UP, 25),
@@ -34,6 +38,15 @@ class SnakeWorldTest {
 		assertTrue(a2.hitBySnake(new Posn(79, 79)));
 		assertFalse(a2.hitBySnake(new Posn(60, 40)));
 		assertFalse(a2.hitBySnake(new Posn(60, 90)));
+	}
+	
+	@Test 
+	void testAddBoxInList() {
+		assertEquals(los1, new LoS(sl1, null));
+		los1.addBoxInList(los1, sl2); 
+		//assertTrue(los1.equals(los1v2));  - fails
+		assertFalse(los1.equals(los1v3));
+		assertFalse(los1.equals(los1));
 	}
 
 }

@@ -64,11 +64,33 @@ public class Snake {
     Snake changeDirection(Posn newDir) {
         return new Snake(this.loc, newDir, this.moveDelay);
     }
+    
+    /** changes the location of the snake */
+    Snake changeLocation(int shiftX, int shiftY) {
+    	return new Snake(loc.translate(new Posn(loc.getX() + shiftX, 
+    			loc.getY() + shiftY)));
+    }
 
     /* returns the snakes position */
     public Posn getLoc() {
     	return loc;
     }
+    
+    /* returns the snakes direction */
+    public Posn getDir() {
+    	return dir;
+    }
+    
+    
+  //deterimines if the snake has hit the apple 
+  	public boolean hitApple(Posn aLoc) 
+  	{	
+  		return aLoc.inRange(this.loc, 30, 30);
+
+  	}
+    
+    
+    
     
     @Override
     public int hashCode() {
