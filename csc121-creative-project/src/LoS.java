@@ -29,7 +29,6 @@ class LoS {
 	public LoS addBox(Apple a) {
 		if (a.hitBySnake(first.getLoc())) {
 			if (this.first.getDir().equals(SnakeWorld.UP)) {
-				System.out.println(this.first.changeLocation(0, 30).getLoc() + "");
 				return addBoxInList(this.first.changeLocation(0,  30));
 			} else if (this.first.getDir().equals(SnakeWorld.DOWN)){
 				return addBoxInList(this.first.changeLocation(0,  -30));

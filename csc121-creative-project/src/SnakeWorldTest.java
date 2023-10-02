@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 class SnakeWorldTest {
 	
     Snake sl1 = new Snake(new Posn(300, 300), SnakeWorld.UP, 0);
-    Snake sl2 = new Snake(new Posn(300, 300), SnakeWorld.UP, 57);
+    Snake sl2 = new Snake(new Posn(300, 300), SnakeWorld.DOWN, 57);
     Snake sl3 = new Snake(new Posn(570, 300), SnakeWorld.RIGHT, 0);
     Snake sl4 = new Snake(new Posn(301, 301), SnakeWorld.UP, 0);
+    Snake sl5 = new Snake(new Posn(301, 301), SnakeWorld.LEFT, 0);
     
 	Apple a = new Apple(new Posn(300, 300));
 	Apple a2 = new Apple(new Posn(50, 50));
@@ -17,12 +18,13 @@ class SnakeWorldTest {
 	LoS los1v3 = new LoS(sl2, new LoS(sl1, null));
 	LoS los2 = new LoS(sl1, new LoS(sl2, new LoS(sl3, null)));
 	LoS los3 = new LoS(sl4, null);
+	LoS los4 = new LoS(sl5, new LoS(sl2, new LoS(sl3, null)));
 	
 	@Test
 	void testSnake() {
 	    assertEquals(new Snake(new Posn(300, 270), SnakeWorld.UP, 25),
 	                 sl1.move());
-        assertEquals(new Snake(new Posn(300, 300), SnakeWorld.UP, 56),
+        assertEquals(new Snake(new Posn(300, 300), SnakeWorld.DOWN, 56),
                     sl2.move());
         
         assertFalse(sl1.hitWall());
@@ -64,7 +66,13 @@ class SnakeWorldTest {
 	void testAddBox() {
 		assertEquals(los3, new LoS(sl4, null));
 		los3 = los3.addBox(a);
-		assertEquals(los3, new LoS(sl4, new LoS(new Snake(new Posn(301, 331), SnakeWorld.UP, 0), null)));
+		assertEquals(los3, new LoS(sl4, new LoS(
+				new Snake(new Posn(301, 331), SnakeWorld.UP, 0), null)));
+		
+		assertEquals(los4, new LoS(sl5, new LoS(sl2, new LoS(sl3, null))));
+		los4 = los4.addBox(a);
+		assertEquals(los4, new LoS(sl5, new LoS(sl2, new LoS(sl3, new LoS(
+				new Snake(new Posn(331, 301), SnakeWorld.LEFT, 0), null)))));
 		
 	}
 	
