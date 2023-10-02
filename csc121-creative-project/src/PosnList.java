@@ -24,6 +24,8 @@ public class PosnList {
         return this.lop.drawSquares(c, size);
     }
 
+    
+    
     /** moves the head of this list in the given 
      *  direction. if grow is true, the tail stays
      *  where it was. if grow is false, drop the
@@ -32,9 +34,11 @@ public class PosnList {
      */
     public PosnList move(Posn dir, boolean grow) {
         this.lop = new ConsLoP(this.getHead().translate(dir), this.lop);
+        
         if (!grow) {
             this.lop = this.lop.dropLast();
         } 
+        
         return this;
     }
     
@@ -42,6 +46,8 @@ public class PosnList {
         return this.move(dir, false);
     }
 
+    
+    
     /**
      * returns the first posn in this list
      */

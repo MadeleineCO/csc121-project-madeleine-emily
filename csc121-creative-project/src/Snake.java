@@ -27,11 +27,11 @@ public class Snake {
         return c;
     }
     
-    /** move this snake's head segment in the it's current direction */
+    /** move this snake's head segment in the its current direction */
     Snake move(Apple a) {
-        
         if (this.moveDelay <= 0 && ! this.hitWall()) {
-            return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), this.dir, SnakeWorld.DELAY_AMOUNT);
+            return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), 
+            	this.dir, SnakeWorld.DELAY_AMOUNT);
         } else {
             return new Snake(this.segs, this.dir, this.moveDelay - 1);
         }
@@ -87,15 +87,6 @@ public class Snake {
     }
     
     
-    /*   don't use this --- use the method in Apple, so that there's one
-         common point for checking for collisions
-     
-  //deterimines if the snake has hit the apple 
-  	public boolean hitApple(Posn aLoc) 
-  	{	
-  		return aLoc.inRange(this.segs.getHead(), 30, 30);
-  	}
-  	*/
 
     @Override
     public int hashCode() {
