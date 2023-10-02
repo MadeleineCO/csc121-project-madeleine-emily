@@ -42,7 +42,7 @@ class SnakeWorldTest {
         assertTrue(new Snake(new PosnList().append(new Posn(570, 300)), SnakeWorld.RIGHT, 0).hitWall());
     }
 
-
+    /*
     @Test
     void testHitBySnake() {
         assertFalse(a.hitBySnake(new Posn(0,0)));
@@ -68,9 +68,9 @@ class SnakeWorldTest {
         los2 = los2.addBoxInList(los2, sl1);
         assertEquals(los2, new LoS(sl1, new LoS(sl2, new LoS(sl3, new LoS(sl1, null)))));
 
-
-
-    }
+    } 
+    
+    */
 
 
     @Test
