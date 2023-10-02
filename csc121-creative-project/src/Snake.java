@@ -67,8 +67,8 @@ public class Snake {
     
     /** changes the location of the snake */
     Snake changeLocation(int shiftX, int shiftY) {
-    	return new Snake(loc.translate(new Posn(loc.getX() + shiftX, 
-    			loc.getY() + shiftY)));
+    	return new Snake(new Posn(loc.getX() + shiftX, loc.getY() + shiftY), 
+    			this.dir, this.moveDelay);
     }
 
     /* returns the snakes position */
@@ -81,13 +81,6 @@ public class Snake {
     	return dir;
     }
     
-    
-  //deterimines if the snake has hit the apple 
-  	public boolean hitApple(Posn aLoc) 
-  	{	
-  		return aLoc.inRange(this.loc, 30, 30);
-
-  	}
     
     
     
