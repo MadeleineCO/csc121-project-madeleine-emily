@@ -28,10 +28,11 @@ public class Apple {
 
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public Apple move(Snake s) {
-		if (this.hitBySnake(s.getLoc()) || 
-				this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
-				this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
-				this.hitBySnake(s.getLoc().translate(new Posn(30, 30)))) 
+		if (this.hitBySnake(s.getLoc())) 
+		    // || 
+			//	this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
+			//	this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
+		    //	this.hitBySnake(s.getLoc().translate(new Posn(30, 30)))) 
 		{
 			return new Apple(
 					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
@@ -47,8 +48,8 @@ public class Apple {
 	//deterimines if the snake has hit the apple 
 	public boolean hitBySnake(Posn sLoc) 
 	{	
-		return sLoc.inRange(this.loc, this.size, this.size);
-
+		//return sLoc.inRange(this.loc, this.size, this.size);
+	    return sLoc.distanceTo(this.loc) < this.size;
 	}
 
 

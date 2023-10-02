@@ -47,8 +47,8 @@ public class Posn {
     // determine whether `this` point is within dx units to the right, 
     //  and dy units below `that` point
     public boolean inRange(Posn that, double dx, double dy) {
-        return this.x > that.x && this.y > that.y &&
-                this.x < (that.x + dx) && this.y < (that.y + dy);
+        return this.x >= that.x && this.y >= that.y &&
+                this.x <= (that.x + dx) && this.y <= (that.y + dy);
     }
     
     

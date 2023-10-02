@@ -33,7 +33,8 @@ public class SnakeWorld
     
     /* updates the SnakeWorld by moving the snake and the apple */
     public SnakeWorld update() {
-    	return new SnakeWorld(this.slimy.move(), this.a.move(slimy));
+        Apple a2 = this.a.move(slimy);
+    	return new SnakeWorld(this.slimy.move(this.a), a2);
     }
 
     /* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */

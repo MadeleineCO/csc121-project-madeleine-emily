@@ -19,7 +19,11 @@ public class SnakeApp extends PApplet {
 		Apple apple = new Apple(
 				new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
 						(float) (Math.random() * ((540 - 60) + 1)) + 60));
-		w = new SnakeWorld(new Snake(new Posn(width/2, height/2)), apple);
+		Posn mid = new Posn(width/2, height/2);
+		PosnList segs = new PosnList().append(mid)
+		                    .append(mid.translate(SnakeWorld.LEFT))
+		                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));
+		w = new SnakeWorld(new Snake(segs), apple);
 	}
 
 	/* draws the SnakeWorld */

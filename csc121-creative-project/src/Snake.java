@@ -2,35 +2,38 @@ import java.util.Objects;
 import processing.core.PApplet;
 
 public class Snake {
-    Posn loc;   /* the head loc */
+    PosnList segs;   /* the list of segments
+                         the head is always the first segment */
     Posn dir;   /* represents the direction of movement */
     int moveDelay; /* number of ticks the snake should wait before actually moving again */
     
     
-    public Snake(Posn loc, Posn dir, int moveDelay) {
-        this.loc = loc;
+    public Snake(PosnList segs, Posn dir, int moveDelay) {
+        this.segs = segs;
         this.dir = dir;
         this.moveDelay = moveDelay;
     }
 
-    public Snake(Posn loc) {
-        this(loc, SnakeWorld.RIGHT, SnakeWorld.DELAY_AMOUNT);
+    public Snake(PosnList segs) {
+        this(segs, SnakeWorld.RIGHT, SnakeWorld.DELAY_AMOUNT);
     }
     
 
     /* draws the snake as a green square */
     PApplet draw(PApplet c) {
         c.fill(64, 227, 73);
-        c.square(this.loc.getX(), this.loc.getY(), 30);
+        segs.drawSquares(c, 30);
+        //c.square(this.loc.getX(), this.loc.getY(), 30);
         return c;
     }
     
     /** move this snake's head segment in the it's current direction */
-    Snake move() {
+    Snake move(Apple a) {
+        
         if (this.moveDelay <= 0 && ! this.hitWall()) {
-            return new Snake(this.loc.translate(this.dir), this.dir, SnakeWorld.DELAY_AMOUNT);
+            return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), this.dir, SnakeWorld.DELAY_AMOUNT);
         } else {
-            return new Snake(this.loc, this.dir, this.moveDelay - 1);
+            return new Snake(this.segs, this.dir, this.moveDelay - 1);
         }
     }
     
@@ -40,7 +43,7 @@ public class Snake {
         if (this.moveDelay > 0) {
             return false;
         } else {
-            Posn newLoc = this.loc.translate(this.dir);
+            Posn newLoc = this.getLoc().translate(this.dir);
             if (newLoc.getX() >= 570) {         //right wall
             	return true;
             } 
@@ -62,32 +65,41 @@ public class Snake {
     
     /** changes the direction that the snake is moving to the given direction */
     Snake changeDirection(Posn newDir) {
-        return new Snake(this.loc, newDir, this.moveDelay);
+        return new Snake(this.segs, newDir, this.moveDelay);
     }
     
     /** changes the location of the snake */
+    /*
     Snake changeLocation(int shiftX, int shiftY) {
-    	return new Snake(new Posn(loc.getX() + shiftX, loc.getY() + shiftY), 
-    			this.dir, this.moveDelay);
+    	return new Snake(loc.translate(new Posn(loc.getX() + shiftX, 
+    			loc.getY() + shiftY)));
     }
+    */
 
-    /* returns the snakes position */
+    /* returns the snake's head position */
     public Posn getLoc() {
-    	return loc;
+    	return this.segs.getHead();
     }
     
-    /* returns the snakes direction */
+    /* returns the snake's direction */
     public Posn getDir() {
     	return dir;
     }
     
     
-    
-    
-    
+    /*   don't use this --- use the method in Apple, so that there's one
+         common point for checking for collisions
+     
+  //deterimines if the snake has hit the apple 
+  	public boolean hitApple(Posn aLoc) 
+  	{	
+  		return aLoc.inRange(this.segs.getHead(), 30, 30);
+  	}
+  	*/
+
     @Override
     public int hashCode() {
-        return Objects.hash(dir, loc, moveDelay);
+        return Objects.hash(dir, moveDelay, segs);
     }
 
     @Override
@@ -99,12 +111,13 @@ public class Snake {
         if (getClass() != obj.getClass())
             return false;
         Snake other = (Snake) obj;
-        return Objects.equals(dir, other.dir) && Objects.equals(loc, other.loc) && moveDelay == other.moveDelay;
+        return Objects.equals(dir, other.dir) && moveDelay == other.moveDelay && Objects.equals(segs, other.segs);
     }
 
     @Override
     public String toString() {
-        return "Snake [loc=" + loc + ", dir=" + dir + ", moveDelay=" + moveDelay + "]";
+        return "Snake [segs=" + segs + ", dir=" + dir + ", moveDelay=" + moveDelay + "]";
     }
+    
 
 }

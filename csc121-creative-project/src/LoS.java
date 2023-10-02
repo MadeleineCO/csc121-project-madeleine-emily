@@ -25,30 +25,30 @@ class LoS {
 //        return c;
 //    }
 	
-	/* if apple is hit by snake, add another snake box */
-	public LoS addBox(Apple a) {
-		if (a.hitBySnake(first.getLoc())) {
+	/* if apple is hit by snake, add another snake box /
+	public LoS addBox(Posn aLoc) {
+		if (this.first.hitApple(aLoc)) {
 			if (this.first.getDir().equals(SnakeWorld.UP)) {
-				return addBoxInList(this.first.changeLocation(0,  30));
+				return addBoxInList(this, this.first.changeLocation(0,  30));
 			} else if (this.first.getDir().equals(SnakeWorld.DOWN)){
-				return addBoxInList(this.first.changeLocation(0,  -30));
+				return addBoxInList(this, this.first.changeLocation(0,  -30));
 			} else if (this.first.getDir().equals(SnakeWorld.RIGHT)){
-				return addBoxInList(this.first.changeLocation(-30, 0));
+				return addBoxInList(this, this.first.changeLocation(-30, 0));
 			} else {    //checks LEFT
-				return addBoxInList(this.first.changeLocation(30, 0));
+				return addBoxInList(this, this.first.changeLocation(30, 0));
 			} 
 			
 		} else {
 			return this; 
 		}
-	}
+	}*/
 	
 	/* adds a snake box onto the back of the list */
-	public LoS addBoxInList(Snake slimy) {
+	public LoS addBoxInList(LoS s, Snake slimy) {
 		if (rest == null) {
 			return new LoS(first, new LoS(slimy, null));
 		} else {
-			return new LoS(first, rest.addBoxInList(slimy));
+			return new LoS(first, rest.addBoxInList(s, slimy));
 		}
 	}
 
