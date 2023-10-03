@@ -66,6 +66,7 @@ public class SnakeWorld implements IWorld
     }
 
     
+    
     @Override
     public String toString() {
         return "SnakeWorld [slimy=" + slimy + ", a=" + a + ", UP=" + UP + ", DOWN=" + DOWN + ", LEFT=" + LEFT
