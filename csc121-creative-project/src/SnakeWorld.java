@@ -3,7 +3,7 @@ import java.util.Objects;
 import processing.core.PApplet; 
 import processing.event.KeyEvent; 
 
-public class SnakeWorld 
+public class SnakeWorld implements IWorld
 {
     Snake slimy;
     Apple a;
@@ -32,13 +32,13 @@ public class SnakeWorld
     }
     
     /* updates the SnakeWorld by moving the snake and the apple */
-    public SnakeWorld update() {
+    public IWorld update() {
         Apple a2 = this.a.move(slimy);
     	return new SnakeWorld(this.slimy.move(this.a), a2);
     }
 
     /* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */
-    public SnakeWorld keyPressed(KeyEvent kev) {
+    public IWorld keyPressed(KeyEvent kev) {
         if (kev.getKeyCode() == PApplet.UP) {
             return new SnakeWorld(this.slimy.changeDirection(this.UP), this.a);
         } else if (kev.getKeyCode() == PApplet.DOWN) {
@@ -47,7 +47,10 @@ public class SnakeWorld
             return new SnakeWorld(this.slimy.changeDirection(this.RIGHT), this.a);
         } else if (kev.getKeyCode() == PApplet.LEFT) {
             return new SnakeWorld(this.slimy.changeDirection(this.LEFT), this.a);
-        } else {
+        } else if (kev.getKey() == 'q'){
+        	return new StartWorld(); 
+        }
+        else {
             return this;
         }
     }

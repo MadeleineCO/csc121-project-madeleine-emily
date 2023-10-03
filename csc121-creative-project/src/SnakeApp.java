@@ -6,7 +6,7 @@ import processing.event.KeyEvent;
  * Provides the scaffolding to launch a Processing application
  */
 public class SnakeApp extends PApplet {
-	SnakeWorld w;
+	IWorld w;
 
 	/* sets the size of the game board */
 	public void settings() {
@@ -15,15 +15,7 @@ public class SnakeApp extends PApplet {
 
 	/* sets up the SnakeWorld */
 	public void setup() {
-		//(Math.random() * ((max - min) + 1)) + min;
-		Apple apple = new Apple(
-				new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
-						(float) (Math.random() * ((540 - 60) + 1)) + 60));
-		Posn mid = new Posn(width/2, height/2);
-		PosnList segs = new PosnList().append(mid)
-		                    .append(mid.translate(SnakeWorld.LEFT))
-		                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));
-		w = new SnakeWorld(new Snake(segs), apple);
+		w = new StartWorld(); 
 	}
 
 	/* draws the SnakeWorld */
