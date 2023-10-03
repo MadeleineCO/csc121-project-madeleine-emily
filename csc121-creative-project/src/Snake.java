@@ -21,7 +21,13 @@ public class Snake {
 
     /* draws the snake as a green square */
     PApplet draw(PApplet c) {
-        c.fill(64, 227, 73);
+    	c.noFill();
+    	c.stroke(62, 157, 74);
+    	c.strokeWeight(30); 
+    	c.rect(0, 0, 600, 600);
+    	c.noStroke(); 
+    	c.strokeWeight(1); 
+        c.fill(64, 152, 227);
         segs.drawSquares(c, 30);
         //c.square(this.loc.getX(), this.loc.getY(), 30);
         return c;

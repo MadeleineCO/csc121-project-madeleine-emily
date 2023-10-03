@@ -36,3 +36,4 @@ public class SnakeApp extends PApplet {
 		PApplet.runSketch(new String[] { "SnakeApp" }, new SnakeApp());
 	}
 } 
+

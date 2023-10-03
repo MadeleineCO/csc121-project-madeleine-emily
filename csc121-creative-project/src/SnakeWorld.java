@@ -25,7 +25,7 @@ public class SnakeWorld implements IWorld
      */
     public PApplet draw(PApplet w) 
     {
-        w.background(27, 108, 32);
+        w.background(108, 206, 120);
         this.slimy.draw(w);
         this.a.draw(w);
         return w;
