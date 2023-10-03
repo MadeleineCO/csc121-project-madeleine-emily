@@ -29,6 +29,8 @@ public interface ILoP {
      * is this list empty?
      */
     boolean isEmpty();
+    
+    // !!! boolean hitAny(Posn p)
 }
 
 

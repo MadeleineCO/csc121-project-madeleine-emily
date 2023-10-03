@@ -15,6 +15,12 @@ public class PosnList {
         this.lop = lop;
     }
 
+    /**
+    boolean ranIntoSelf()
+    {
+    	lop.rest.hitAny(this.first); 
+    }
+    */
 
     /**
      * draws squares of the given size at each of the 

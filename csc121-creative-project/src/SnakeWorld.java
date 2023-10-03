@@ -54,6 +54,16 @@ public class SnakeWorld implements IWorld
             return this;
         }
     }
+    
+    public IWorld gameOver()
+    {
+    	if (this.slimy.hitWall())
+    	{
+    		return new OverWorld(); 
+    	} else {
+    		return this; 
+    	}
+    }
 
     
     @Override

@@ -22,6 +22,7 @@ public class SnakeApp extends PApplet {
 	public void draw() {
 		w = w.update();
 		w.draw(this);
+		w = w.gameOver();  
 	}
 
 	/* updates the SnakeWorld when an arrow key is pressed */

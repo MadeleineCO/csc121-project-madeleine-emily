@@ -1,19 +1,22 @@
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
-public class StartWorld implements IWorld{
+public class OverWorld implements IWorld{
+
+
 
 	@Override
 	public PApplet draw(PApplet w) {
 		w.background(200);
 		w.fill(0);
-		w.text("Press spacebar to start", 200, 200);
+		w.text("GAME OVER", 100, 100);
+		w.text("Press spacebar to restart", 200, 200);
 		return w;
 	}
 
 	@Override
 	public IWorld update() {
-		return this;
+		return this; 
 	}
 
 	@Override
