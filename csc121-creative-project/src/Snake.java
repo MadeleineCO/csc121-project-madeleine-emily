@@ -63,6 +63,7 @@ public class Snake {
     }
     
     
+    
     /** changes the direction that the snake is moving to the given direction */
     Snake changeDirection(Posn newDir) {
         return new Snake(this.segs, newDir, this.moveDelay);
@@ -86,6 +87,11 @@ public class Snake {
     	return dir;
     }
     
+    
+    /*returns the snake's segments */
+    public PosnList getSegs() {
+    	return segs;
+    }
     
 
     @Override

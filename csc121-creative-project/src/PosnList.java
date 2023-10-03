@@ -52,7 +52,19 @@ public class PosnList {
         return this.move(dir, false);
     }
 
-    
+	//  //deterimines if the snake has hit the apple 
+	//	public boolean hitBySnake(Posn sLoc) 
+	//	{	
+	//		//return sLoc.inRange(this.loc, this.size, this.size);
+	//	    return sLoc.distanceTo(this.loc) < this.size;
+	//}
+	
+	
+	/** checks if the head of this snake has hit itself */
+	boolean hitPosnInList() {
+		return lop.hitPosnInList(lop);
+	}
+		
     
     /**
      * returns the first posn in this list

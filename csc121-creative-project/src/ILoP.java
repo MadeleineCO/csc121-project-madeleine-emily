@@ -13,6 +13,9 @@ public interface ILoP {
 
     /** produces the first posn in this list */
     Posn getFirst();
+    
+    /** returns the rest of the list */
+    ILoP getRest();
 
     /**
      * draws squares of the given size at each of the 
@@ -31,6 +34,13 @@ public interface ILoP {
     boolean isEmpty();
     
     // !!! boolean hitAny(Posn p)
+    
+    
+    //counts the number of posns in this list
+    int countSegs();
+
+    //determines if the first posn in this list hits another posn in the list */
+	boolean hitPosnInList(ILoP list);
 }
 
 
@@ -87,6 +97,21 @@ class MTLoP implements ILoP {
     public String toString() {
         return "MTLoP []";
     }
+
+	@Override
+	public int countSegs() {
+		return 0;
+	}
+
+	@Override
+	public ILoP getRest() {
+		return null;
+	}
+
+	@Override
+	public boolean hitPosnInList(ILoP list) {
+		return false;
+	}
 }
 
 
@@ -107,6 +132,11 @@ class ConsLoP implements ILoP {
     /** produces the first posn in this list */
     public Posn getFirst() {
         return this.first;
+    }
+    
+    /** returns the rest of the list */
+    public ILoP getRest() {
+    	return this.rest;
     }
     
     /**
@@ -160,6 +190,28 @@ class ConsLoP implements ILoP {
     public String toString() {
         return "ConsLoP [first=" + first + ", rest=" + rest + "]";
     }
+
+	@Override
+	public int countSegs() {
+		return 1 + this.rest.countSegs();
+	}
+
+	@Override
+	public boolean hitPosnInList(ILoP list) {
+		int i = 1;
+		
+		while(i < this.countSegs()) {
+
+			if (list.getFirst().distanceTo(list.getRest().getFirst()) < 30) {
+				return true;
+			} 
+			
+			i += 1;
+			list = this.rest;
+		}
+		
+		return false;
+	}
     
     
     

@@ -48,7 +48,6 @@ public class Apple {
 	//deterimines if the snake has hit the apple 
 	public boolean hitBySnake(Posn sLoc) 
 	{	
-		//return sLoc.inRange(this.loc, this.size, this.size);
 	    return sLoc.distanceTo(this.loc) < this.size;
 	}
 
