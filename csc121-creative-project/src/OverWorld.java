@@ -7,7 +7,7 @@ public class OverWorld implements IWorld{
 
 	@Override
 	public PApplet draw(PApplet w) {
-		w.background(200);
+		w.background(173, 216, 230);
 		w.fill(0);
 		w.text("GAME OVER", 100, 100);
 		w.text("Press spacebar to restart", 200, 200);
