@@ -13,7 +13,7 @@ public class SnakeWorld implements IWorld
     static Posn LEFT = new Posn(-30, 0);
     static Posn RIGHT = new Posn(30, 0);
     
-    static int DELAY_AMOUNT = 25;
+    static int DELAY_AMOUNT = 15;
 
     public SnakeWorld(Snake slimy, Apple a) {
         this.slimy = slimy;
