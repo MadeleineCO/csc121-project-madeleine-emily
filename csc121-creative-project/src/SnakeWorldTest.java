@@ -21,12 +21,12 @@ class SnakeWorldTest {
     void testSnake() {
         assertTrue(a.hitBySnake(new Posn(300, 300)));
         
-        assertEquals(new Snake(new PosnList().append(new Posn(300, 270)), SnakeWorld.UP, 25),
+        assertEquals(new Snake(new PosnList().append(new Posn(300, 270)), SnakeWorld.UP, SnakeWorld.DELAY_AMOUNT),
                 sl1.move(a));
         assertEquals(new Snake(new PosnList().append(new Posn(300, 300)), SnakeWorld.UP, 56),
                 sl2.move(a));
 
-        assertEquals(new Snake(new PosnList().append(new Posn(300, 300)).append(new Posn(300, 270)), SnakeWorld.DOWN, 25),
+        assertEquals(new Snake(new PosnList().append(new Posn(300, 300)).append(new Posn(300, 270)), SnakeWorld.DOWN, SnakeWorld.DELAY_AMOUNT),
                 new Snake(new PosnList().append(new Posn(300, 270)), SnakeWorld.DOWN, 0).move(a));
 
         

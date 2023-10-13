@@ -6,8 +6,10 @@ import processing.event.KeyEvent;
  * Provides the scaffolding to launch a Processing application
  */
 public class SnakeApp extends PApplet {
-	IWorld w;
+	
+	private IWorld w;
 
+	
 	/* sets the size of the game board */
 	public void settings() {
 		this.size(600, 600);

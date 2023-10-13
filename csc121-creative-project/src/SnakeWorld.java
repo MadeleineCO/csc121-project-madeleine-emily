@@ -5,15 +5,15 @@ import processing.event.KeyEvent;
 
 public class SnakeWorld implements IWorld
 {
-    Snake slimy;
-    Apple a;
+    private Snake slimy;
+    private Apple a;
 
-    static Posn UP = new Posn(0, -30);
-    static Posn DOWN = new Posn(0, 30);
-    static Posn LEFT = new Posn(-30, 0);
-    static Posn RIGHT = new Posn(30, 0);
+    public static final Posn UP = new Posn(0, -30);
+    public static final Posn DOWN = new Posn(0, 30);
+    public static final Posn LEFT = new Posn(-30, 0);
+    public static final Posn RIGHT = new Posn(30, 0);
     
-    static int DELAY_AMOUNT = 15;
+    public static final int DELAY_AMOUNT = 15;
 
     public SnakeWorld(Snake slimy, Apple a) {
         this.slimy = slimy;

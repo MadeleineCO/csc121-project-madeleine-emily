@@ -9,8 +9,8 @@ public class Apple {
 
 
 	/** the position of the apple */
-	Posn loc;
-	int size;
+	private Posn loc;
+	private int size;
 
 
 	public Apple(Posn loc) {

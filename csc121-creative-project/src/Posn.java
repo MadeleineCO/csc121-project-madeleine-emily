@@ -1,8 +1,8 @@
 import java.util.Objects;
 
 public class Posn {
-    float x;
-    float y;
+    private float x;
+    private float y;
     
     public Posn(float x, float y) {
         this.x = x;

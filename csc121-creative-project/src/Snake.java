@@ -2,10 +2,10 @@ import java.util.Objects;
 import processing.core.PApplet;
 
 public class Snake {
-    PosnList segs;   /* the list of segments
+    private PosnList segs;   /* the list of segments
                          the head is always the first segment */
-    Posn dir;   /* represents the direction of movement */
-    int moveDelay; /* number of ticks the snake should wait before actually moving again */
+    private Posn dir;   /* represents the direction of movement */
+    private int moveDelay; /* number of ticks the snake should wait before actually moving again */
     
     
     public Snake(PosnList segs, Posn dir, int moveDelay) {
