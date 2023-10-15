@@ -39,13 +39,15 @@ public class SnakeWorld implements IWorld
 
     /* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */
     public IWorld keyPressed(KeyEvent kev) {
-        if (kev.getKeyCode() == PApplet.UP) {
+        if (kev.getKeyCode() == PApplet.UP && this.slimy.getDir() != SnakeWorld.DOWN) {
             return new SnakeWorld(this.slimy.changeDirection(this.UP), this.a);
-        } else if (kev.getKeyCode() == PApplet.DOWN) {
+        } 
+        else if (kev.getKeyCode() == PApplet.DOWN && this.slimy.getDir() != SnakeWorld.UP) {
             return new SnakeWorld(this.slimy.changeDirection(this.DOWN), this.a);
-        } else if (kev.getKeyCode() == PApplet.RIGHT) {
+        } 
+        else if (kev.getKeyCode() == PApplet.RIGHT && this.slimy.getDir() != SnakeWorld.LEFT) {
             return new SnakeWorld(this.slimy.changeDirection(this.RIGHT), this.a);
-        } else if (kev.getKeyCode() == PApplet.LEFT) {
+        } else if (kev.getKeyCode() == PApplet.LEFT && this.slimy.getDir() != SnakeWorld.RIGHT) {
             return new SnakeWorld(this.slimy.changeDirection(this.LEFT), this.a);
         } else if (kev.getKey() == 'q'){
         	return new StartWorld(); 
