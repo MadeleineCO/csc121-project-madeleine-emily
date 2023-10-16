@@ -3,6 +3,9 @@ import processing.event.KeyEvent;
 
 public class StartWorld implements IWorld{
 
+	/*
+	 * Draws this StartWorld
+	 */
 	@Override
 	public PApplet draw(PApplet w) {
 		w.background(173, 216, 230);
@@ -12,11 +15,17 @@ public class StartWorld implements IWorld{
 		return w;
 	}
 
+	/*
+	 * Returns this StartWorld
+	 */
 	@Override
 	public IWorld update() {
 		return this;
 	}
 
+	/*
+	 * Determines if the spacebar has been pressed. If so, resets this StartWorld
+	 */
 	@Override
 	public IWorld keyPressed(KeyEvent kev) {
 		if (kev.getKey() == ' ')
@@ -37,6 +46,9 @@ public class StartWorld implements IWorld{
 		
 	}
 	
+	/*
+	 * Returns this StartWorld
+	 */
 	@Override 
 	public IWorld gameOver()
 	{

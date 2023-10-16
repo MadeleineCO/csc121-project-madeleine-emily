@@ -48,16 +48,13 @@ public class PosnList {
         return this;
     }
     
+    /*
+     * Moves the snake
+     */
     public PosnList move(Posn dir) {
         return this.move(dir, false);
     }
 
-	//  //deterimines if the snake has hit the apple 
-	//	public boolean hitBySnake(Posn sLoc) 
-	//	{	
-	//		//return sLoc.inRange(this.loc, this.size, this.size);
-	//	    return sLoc.distanceTo(this.loc) < this.size;
-	//}
 	
 	
 	/** checks if the head of this snake has hit itself */
@@ -81,6 +78,8 @@ public class PosnList {
         this.lop = this.lop.append(posn);
         return this;
     }
+    
+    
     
     
     // auto-generated methods

@@ -4,7 +4,9 @@ import processing.event.KeyEvent;
 public class OverWorld implements IWorld{
 
 
-
+	/*
+	 * Draws the game over screen
+	 */
 	@Override
 	public PApplet draw(PApplet w) {
 		w.background(173, 216, 230);
@@ -16,11 +18,17 @@ public class OverWorld implements IWorld{
 		return w;
 	}
 
+	/*
+	 * Returns this OverWorld
+	 */
 	@Override
 	public IWorld update() {
 		return this; 
 	}
 
+	/*
+	 * Resets the game when the spacebar is pressed
+	 */
 	@Override
 	public IWorld keyPressed(KeyEvent kev) {
 		if (kev.getKey() == ' ')
@@ -41,6 +49,9 @@ public class OverWorld implements IWorld{
 		
 	}
 	
+	/*
+	 * Retruns this OverWorld
+	 */
 	@Override 
 	public IWorld gameOver()
 	{

@@ -57,6 +57,9 @@ public class SnakeWorld implements IWorld
         }
     }
     
+    /*
+     * Determines if the snake his hit the wall or itself. If so, returns the game over world
+     */
     public IWorld gameOver()
     {
     	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList())
@@ -68,6 +71,7 @@ public class SnakeWorld implements IWorld
     	}
     }
 
+    
     
     
     @Override

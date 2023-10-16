@@ -2,12 +2,25 @@ import processing.core.PApplet;
 import processing.event.KeyEvent;
 
 public interface IWorld {
-	 public PApplet draw(PApplet w); 
+	
+	/*
+	 * Draws the IWrld
+	 */
+	public PApplet draw(PApplet w); 
 	 
-	 public IWorld update(); 
+	/*
+	 * Updates the elements of the IWorld
+	 */
+	public IWorld update(); 
+	
+	/*
+	 * Respons to KeyEvents in the IWorld
+	 */
+	public IWorld keyPressed(KeyEvent kev); 
 	 
-	 public IWorld keyPressed(KeyEvent kev); 
-	 
-	 public IWorld gameOver(); 
+	/*
+	 * Determines what happens to the IWorld when the game is over
+	 */
+	public IWorld gameOver(); 
 	 
 }
