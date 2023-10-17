@@ -57,11 +57,14 @@ public class Apple {
 		return loc;
 	}
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Apple [loc=" + loc + ", size=" + size + "]";
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(loc, size);

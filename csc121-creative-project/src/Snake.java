@@ -99,6 +99,9 @@ public class Snake {
     	return segs;
     }
     
+    
+    
+    
 
     @Override
     public int hashCode() {
