@@ -6,7 +6,7 @@ import processing.event.KeyEvent;
 public class SnakeWorld implements IWorld
 {
     private Snake slimy;
-    private Apple a;
+    private IFruit a;
 
     public static final Posn UP = new Posn(0, -30);
     public static final Posn DOWN = new Posn(0, 30);
@@ -15,7 +15,7 @@ public class SnakeWorld implements IWorld
     
     public static final int DELAY_AMOUNT = 15;
 
-    public SnakeWorld(Snake slimy, Apple a) {
+    public SnakeWorld(Snake slimy, IFruit a) {
         this.slimy = slimy;
         this.a = a;
     }
@@ -33,7 +33,7 @@ public class SnakeWorld implements IWorld
     
     /* updates the SnakeWorld by moving the snake and the apple */
     public IWorld update() {
-        Apple a2 = this.a.move(slimy);
+        IFruit a2 = this.a.move(slimy);
     	return new SnakeWorld(this.slimy.move(this.a), a2);
     }
 

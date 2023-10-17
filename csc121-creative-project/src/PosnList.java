@@ -58,7 +58,7 @@ public class PosnList {
 	
 	
 	/** checks if the head of this snake has hit itself */
-	boolean hitPosnInList() {
+	public boolean hitPosnInList() {
 		return lop.hitPosnInList(lop);
 	}
 		

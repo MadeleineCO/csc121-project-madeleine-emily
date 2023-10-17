@@ -5,42 +5,34 @@ import processing.core.PApplet;
 /* 
  * Represents an apple in the Snake game
  */
-public class Apple {
+public class Apple extends Fruit {
 
 
 	/** the position of the apple */
 	private Posn loc;
-	private int size;
 
 
 	public Apple(Posn loc) {
-		this.loc = loc;
-		this.size = 30;
+		super(loc);
 	}
 
 	/* draws the apple as a red square */
-	public PApplet draw(PApplet a) {
-		a.fill(255, 0, 0);
-		a.square((int) this.loc.getX(), (int) this.loc.getY(), size);
-		return a;
-	}
+//	public PApplet draw(PApplet a) {
+//		a.fill(255, 0, 0);
+//		a.square((int) this.loc.getX(), (int) this.loc.getY(), size);
+//		return a;
+//	}
 
 
 	/* if the snake eats the apple, then the apple updates to a random location */
-	public Apple move(Snake s) {
-		if (this.hitBySnake(s.getLoc())) 
-		    // || 
-			//	this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
-			//	this.hitBySnake(s.getLoc().translate(new Posn(0, 30))) ||
-		    //	this.hitBySnake(s.getLoc().translate(new Posn(30, 30)))) 
-		{
+	public IFruit move(Snake s) {
+		if (this.hitBySnake(s.getLoc())) {
 			return new Apple(
 					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
 							(float) (Math.random() * ((540 - 40) + 1)) + 60));
 		}
-		else {
-			return this;
-		}
+		
+		return this;
 
 	}
 
@@ -48,26 +40,26 @@ public class Apple {
 	//deterimines if the snake has hit the apple 
 	public boolean hitBySnake(Posn sLoc) 
 	{	
-	    return sLoc.distanceTo(this.loc) < this.size;
+	    return sLoc.distanceTo(this.loc) < SIZE;
 	}
 
 
 	/* returns the apple's position */
-	public Posn getLoc() {
-		return loc;
-	}
+//	public Posn getLoc() {
+//		return loc;
+//	}
 
 	
 	
 	
 	@Override
 	public String toString() {
-		return "Apple [loc=" + loc + ", size=" + size + "]";
+		return "Apple [loc=" + loc + ", size=" + SIZE + "]";
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(loc, size);
+		return Objects.hash(loc, SIZE);
 	}
 
 	@Override
@@ -79,7 +71,7 @@ public class Apple {
 		if (getClass() != obj.getClass())
 			return false;
 		Apple other = (Apple) obj;
-		return Objects.equals(loc, other.loc) && size == other.size;
+		return Objects.equals(loc, other.loc) && SIZE == other.SIZE;
 	}
 
 

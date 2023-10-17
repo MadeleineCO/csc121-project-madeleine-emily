@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
-public class StartWorld implements IWorld{
+public class StartWorld implements IWorld {
 
 	/*
 	 * Draws this StartWorld

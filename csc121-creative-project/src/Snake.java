@@ -34,7 +34,7 @@ public class Snake {
     }
     
     /** move this snake's head segment in the its current direction */
-    Snake move(Apple a) {
+    Snake move(IFruit a) {
         if (this.moveDelay <= 0 && ! this.hitWall()) {
             return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), 
             	this.dir, SnakeWorld.DELAY_AMOUNT);
