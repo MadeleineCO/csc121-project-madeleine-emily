@@ -6,13 +6,13 @@ import java.util.Objects;
 
 import processing.core.PApplet;
 
-abstract class Fruit implements IFruit {
+abstract class AFruit implements IFruit {
 
 	/** the position of the apple */
 	private Posn loc;
 	public final static int SIZE = 30;
 	
-	public Fruit(Posn loc) {
+	public AFruit(Posn loc) {
 		this.loc = loc;
 	}
 	
@@ -36,28 +36,6 @@ abstract class Fruit implements IFruit {
 		return loc;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(loc, SIZE);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Fruit other = (Fruit) obj;
-		return Objects.equals(loc, other.loc) && SIZE == other.SIZE;
-	}
-
-	@Override
-	public String toString() {
-		return "Fruit [loc=" + loc + ", size=" + SIZE + "]";
-	}
-	
 	
 		
 		

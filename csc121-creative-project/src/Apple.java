@@ -5,7 +5,7 @@ import processing.core.PApplet;
 /* 
  * Represents an apple in the Snake game
  */
-public class Apple extends Fruit {
+public class Apple extends AFruit implements IFruit {
 
 
 	/** the position of the apple */
@@ -40,7 +40,7 @@ public class Apple extends Fruit {
 	//deterimines if the snake has hit the apple 
 	public boolean hitBySnake(Posn sLoc) 
 	{	
-	    return sLoc.distanceTo(this.loc) < SIZE;
+	    return sLoc.distanceTo(this.getLoc()) < SIZE;
 	}
 
 

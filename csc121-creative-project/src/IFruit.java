@@ -12,5 +12,7 @@ interface IFruit {
 	
 	public boolean hitBySnake(Posn sLoc);
 	
+	public Posn getLoc();
+	
 	
 }
