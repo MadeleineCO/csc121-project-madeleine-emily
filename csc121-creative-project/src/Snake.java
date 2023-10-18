@@ -18,6 +18,7 @@ public class Snake {
         this(segs, SnakeWorld.RIGHT, SnakeWorld.DELAY_AMOUNT);
     }
     
+    
 
     /* draws the snake as a green square */
     PApplet draw(PApplet c) {

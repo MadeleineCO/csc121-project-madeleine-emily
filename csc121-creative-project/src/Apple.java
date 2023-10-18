@@ -16,13 +16,6 @@ public class Apple extends AFruit implements IFruit {
 		super(loc);
 	}
 
-	/* draws the apple as a red square */
-//	public PApplet draw(PApplet a) {
-//		a.fill(255, 0, 0);
-//		a.square((int) this.loc.getX(), (int) this.loc.getY(), size);
-//		return a;
-//	}
-
 
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public IFruit move(Snake s) {
@@ -43,14 +36,6 @@ public class Apple extends AFruit implements IFruit {
 	    return sLoc.distanceTo(this.getLoc()) < SIZE;
 	}
 
-
-	/* returns the apple's position */
-//	public Posn getLoc() {
-//		return loc;
-//	}
-
-	
-	
 	
 	@Override
 	public String toString() {
