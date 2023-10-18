@@ -7,16 +7,17 @@ import processing.core.PApplet;
  */
 public class Apple extends AFruit implements IFruit {
 
-
-	/** the position of the apple */
-	private Posn loc;
-
-
 	public Apple(Posn loc) {
 		super(loc);
 	}
 
-
+	public PApplet draw(PApplet a) {
+		a.fill(255, 0, 0);
+		a.square((int) this.getLoc().getX(), (int) this.getLoc().getY(), SIZE);
+		return a;
+	}
+	
+	
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public IFruit move(Snake s) {
 		if (this.hitBySnake(s.getLoc())) {
@@ -29,39 +30,10 @@ public class Apple extends AFruit implements IFruit {
 
 	}
 
-
-	//deterimines if the snake has hit the apple 
-	public boolean hitBySnake(Posn sLoc) 
-	{	
-	    return sLoc.distanceTo(this.getLoc()) < SIZE;
-	}
-
-	
 	@Override
 	public String toString() {
-		return "Apple [loc=" + loc + ", size=" + SIZE + "]";
+		return "Apple []";
 	}
 	
-	@Override
-	public int hashCode() {
-		return Objects.hash(loc, SIZE);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Apple other = (Apple) obj;
-		return Objects.equals(loc, other.loc) && SIZE == other.SIZE;
-	}
-
-
-
-
-
-
+	
 }

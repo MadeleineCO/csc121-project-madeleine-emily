@@ -37,8 +37,7 @@ public class Snake {
     /** move this snake's head segment in the its current direction */
     Snake move(IFruit a) {
         if (this.moveDelay <= 0 && ! this.hitWall()) {
-            return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), 
-            	this.dir, SnakeWorld.DELAY_AMOUNT);
+            return new Snake(this.segs.move(this.dir, a.hitBySnake(this.getLoc().translate(this.dir))), this.dir, SnakeWorld.DELAY_AMOUNT);
         } else {
             return new Snake(this.segs, this.dir, this.moveDelay - 1);
         }
@@ -76,13 +75,6 @@ public class Snake {
         return new Snake(this.segs, newDir, this.moveDelay);
     }
     
-    /** changes the location of the snake */
-    /*
-    Snake changeLocation(int shiftX, int shiftY) {
-    	return new Snake(loc.translate(new Posn(loc.getX() + shiftX, 
-    			loc.getY() + shiftY)));
-    }
-    */
 
     /* returns the snake's head position */
     public Posn getLoc() {

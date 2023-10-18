@@ -74,7 +74,7 @@ public class SnakeWorld implements IWorld
      */
     public IWorld gameOver()
     {
-    	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList())
+    	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList() || b.hitBySnake(this.slimy.getLoc()))
     	{
     		return new OverWorld(); 
     		

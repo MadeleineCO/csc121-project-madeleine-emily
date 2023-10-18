@@ -17,19 +17,18 @@ abstract class AFruit implements IFruit {
 	}
 	
 	/* draws the fruit as a square */
-	public PApplet draw(PApplet a) {
-		a.fill(255, 0, 0);
-		a.square((int) this.loc.getX(), (int) this.loc.getY(), SIZE);
-		return a;
-	}
+	public abstract PApplet draw(PApplet a);
 	
 	
-	/* if the snake eats the apple, then the apple updates to a random location */
+	/* the fruit responds to being hit by the snake */
 	public abstract IFruit move(Snake s);
 	
 	
-	//deterimines if the snake has hit the apple 
-	public abstract boolean hitBySnake(Posn sLoc);
+	//deterimines if the snake has hit the fruit 
+		public boolean hitBySnake(Posn sLoc) 
+		{	
+		    return sLoc.distanceTo(this.getLoc()) < SIZE;
+		}
 	
 	/* returns the apple's position */
 	public Posn getLoc() {

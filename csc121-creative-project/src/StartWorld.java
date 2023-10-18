@@ -31,14 +31,17 @@ public class StartWorld implements IWorld {
 		if (kev.getKey() == ' ')
 		{
 			//(Math.random() * ((max - min) + 1)) + min;
-			Apple apple = new Apple(
+			IFruit apple = new Apple(
+					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
+							(float) (Math.random() * ((540 - 60) + 1)) + 60));
+			IFruit berry = new PoisonBerry(
 					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
 							(float) (Math.random() * ((540 - 60) + 1)) + 60));
 			Posn mid = new Posn(200/2, 200/2);
 			PosnList segs = new PosnList().append(mid)
 			                    .append(mid.translate(SnakeWorld.LEFT))
 			                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));
-			return new SnakeWorld(new Snake(segs), apple);
+			return new SnakeWorld(new Snake(segs), apple, berry);
 		} else 
 		{
 			return this;
