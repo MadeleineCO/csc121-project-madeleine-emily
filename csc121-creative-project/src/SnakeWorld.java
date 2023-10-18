@@ -20,8 +20,8 @@ public class SnakeWorld implements IWorld
         this.slimy = slimy;
         this.a = a;
         this.b = new Apple(
-				new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
-						(float) (Math.random() * ((540 - 40) + 1)) + 60));
+				new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+						(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
     }
     
     public SnakeWorld(Snake slimy, IFruit a, IFruit b) {
@@ -31,7 +31,7 @@ public class SnakeWorld implements IWorld
     }
 
     /**
-     * Renders a picture of the drop on the window
+     * Renders the game
      */
     public PApplet draw(PApplet w) 
     {
@@ -51,16 +51,16 @@ public class SnakeWorld implements IWorld
 
     /* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */
     public IWorld keyPressed(KeyEvent kev) {
-        if (kev.getKeyCode() == PApplet.UP && this.slimy.getDir() != SnakeWorld.DOWN) {
-            return new SnakeWorld(this.slimy.changeDirection(this.UP), this.a, this.b);
+        if (kev.getKeyCode() == PApplet.UP && this.slimy.getDir() != DOWN) {
+            return new SnakeWorld(this.slimy.changeDirection(UP), this.a, this.b);
         } 
-        else if (kev.getKeyCode() == PApplet.DOWN && this.slimy.getDir() != SnakeWorld.UP) {
-            return new SnakeWorld(this.slimy.changeDirection(this.DOWN), this.a, this.b);
+        else if (kev.getKeyCode() == PApplet.DOWN && this.slimy.getDir() != UP) {
+            return new SnakeWorld(this.slimy.changeDirection(DOWN), this.a, this.b);
         } 
-        else if (kev.getKeyCode() == PApplet.RIGHT && this.slimy.getDir() != SnakeWorld.LEFT) {
-            return new SnakeWorld(this.slimy.changeDirection(this.RIGHT), this.a, this.b);
-        } else if (kev.getKeyCode() == PApplet.LEFT && this.slimy.getDir() != SnakeWorld.RIGHT) {
-            return new SnakeWorld(this.slimy.changeDirection(this.LEFT), this.a, this.b);
+        else if (kev.getKeyCode() == PApplet.RIGHT && this.slimy.getDir() != LEFT) {
+            return new SnakeWorld(this.slimy.changeDirection(RIGHT), this.a, this.b);
+        } else if (kev.getKeyCode() == PApplet.LEFT && this.slimy.getDir() != RIGHT) {
+            return new SnakeWorld(this.slimy.changeDirection(LEFT), this.a, this.b);
         } else if (kev.getKey() == 'q'){
         	return new StartWorld(); 
         }
@@ -83,32 +83,30 @@ public class SnakeWorld implements IWorld
     	}
     }
 
-    
-    
-    //re-generate to update
-    @Override
-    public String toString() {
-        return "SnakeWorld [slimy=" + slimy + ", a=" + a + ", UP=" + UP + ", DOWN=" + DOWN + ", LEFT=" + LEFT
-                + ", RIGHT=" + RIGHT + "]";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(a, b, slimy);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SnakeWorld other = (SnakeWorld) obj;
+		return Objects.equals(a, other.a) && Objects.equals(b, other.b) && Objects.equals(slimy, other.slimy);
+	}
+
+	@Override
+	public String toString() {
+		return "SnakeWorld [slimy=" + slimy + ", a=" + a + ", b=" + b + "]";
+	}
+
 
     
-    @Override
-    public int hashCode() {
-        return Objects.hash(a, slimy);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        SnakeWorld other = (SnakeWorld) obj;
-        return Objects.equals(a, other.a) && Objects.equals(slimy, other.slimy);
-    }
 
 
 

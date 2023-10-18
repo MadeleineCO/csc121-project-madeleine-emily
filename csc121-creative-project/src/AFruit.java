@@ -35,6 +35,30 @@ abstract class AFruit implements IFruit {
 		return loc;
 	}
 
+	@Override
+	public String toString() {
+		return "AFruit [loc=" + loc + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(loc);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AFruit other = (AFruit) obj;
+		return Objects.equals(loc, other.loc);
+	}
+	
+	
+
 	
 		
 		

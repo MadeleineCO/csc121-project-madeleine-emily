@@ -4,7 +4,7 @@ import processing.event.KeyEvent;
 public class StartWorld implements IWorld {
 
 	/*
-	 * Draws this StartWorld
+	 * Draws this StartWorld screen
 	 */
 	@Override
 	public PApplet draw(PApplet w) {
@@ -32,12 +32,12 @@ public class StartWorld implements IWorld {
 		{
 			//(Math.random() * ((max - min) + 1)) + min;
 			IFruit apple = new Apple(
-					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
-							(float) (Math.random() * ((540 - 60) + 1)) + 60));
+					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
 			IFruit berry = new PoisonBerry(
-					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
-							(float) (Math.random() * ((540 - 60) + 1)) + 60));
-			Posn mid = new Posn(200/2, 200/2);
+					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
+			Posn mid = new Posn(SnakeApp.WINDOW_SIZE/2, SnakeApp.WINDOW_SIZE/2);
 			PosnList segs = new PosnList().append(mid)
 			                    .append(mid.translate(SnakeWorld.LEFT))
 			                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));

@@ -24,13 +24,12 @@ public class Snake {
     PApplet draw(PApplet c) {
     	c.noFill();
     	c.stroke(62, 157, 74);
-    	c.strokeWeight(30); 
-    	c.rect(0, 0, 600, 600);
+    	c.strokeWeight(AFruit.SIZE); 
+    	c.rect(0, 0, SnakeApp.WINDOW_SIZE, SnakeApp.WINDOW_SIZE);
     	c.noStroke(); 
     	c.strokeWeight(1); 
         c.fill(64, 152, 227);
-        segs.drawSquares(c, 30);
-        //c.square(this.loc.getX(), this.loc.getY(), 30);
+        segs.drawSquares(c, AFruit.SIZE);
         return c;
     }
     

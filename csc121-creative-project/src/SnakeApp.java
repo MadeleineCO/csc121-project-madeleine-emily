@@ -8,11 +8,11 @@ import processing.event.KeyEvent;
 public class SnakeApp extends PApplet {
 	
 	private IWorld w;
-
+	public static final int WINDOW_SIZE = 600;
 	
 	/* sets the size of the game board */
 	public void settings() {
-		this.size(600, 600);
+		this.size(WINDOW_SIZE, WINDOW_SIZE);
 	}
 
 	/* sets up the SnakeWorld */

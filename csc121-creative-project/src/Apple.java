@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 import processing.core.PApplet; 
 
 /* 
@@ -22,8 +20,8 @@ public class Apple extends AFruit implements IFruit {
 	public IFruit move(Snake s) {
 		if (this.hitBySnake(s.getLoc())) {
 			return new Apple(
-					new Posn( (float)  (Math.random() * ((540 - 60) + 1)) + 60, 
-							(float) (Math.random() * ((540 - 40) + 1)) + 60));
+					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
 		}
 		
 		return this;
@@ -34,6 +32,8 @@ public class Apple extends AFruit implements IFruit {
 	public String toString() {
 		return "Apple []";
 	}
+	
+	
 	
 	
 }
