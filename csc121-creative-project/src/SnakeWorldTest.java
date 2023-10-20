@@ -82,8 +82,4 @@ class SnakeWorldTest {
 		assertTrue(lop4.hitPosnInList(lop4));
 	
     }
-
-
-
-
 }

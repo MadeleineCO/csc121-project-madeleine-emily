@@ -1,23 +1,23 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.event.KeyEvent;
 
 /*
  * Represents the game over world 
  */
 public class OverWorld implements IWorld {
-
+	PImage img; 
 
 	/*
 	 * Draws the game over screen
 	 */
 	@Override
 	public PApplet draw(PApplet w) {
-		w.background(173, 216, 230);
-		w.fill(255, 0, 0);
-		w.textSize(40);
-		w.text("GAME OVER", 205, 100);
-		w.textSize(25);
-		w.text("Press spacebar to restart", 180, 180);
+		w.background(8, 170, 255);
+		w.textSize(25); 
+		w.fill(0);
+		img = w.loadImage("Game Over.png");
+		w.image(img, 0, -45); 
 		return w;
 	}
 

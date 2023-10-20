@@ -1,17 +1,20 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.event.KeyEvent;
 
 public class StartWorld implements IWorld {
-
+	PImage img; 
+	
 	/*
 	 * Draws this StartWorld screen
 	 */
 	@Override
 	public PApplet draw(PApplet w) {
-		w.background(173, 216, 230);
-		w.textSize(25);
+		w.background(8, 170, 255);
+		w.textSize(25); 
 		w.fill(0);
-		w.text("Press spacebar to start", 180, 180);
+		img = w.loadImage("press SpaceBar To Start Newwww.png");
+		w.image(img, 0, -45); 
 		return w;
 	}
 
