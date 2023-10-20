@@ -40,7 +40,9 @@ public interface ILoP {
     int countSegs();
 
     //determines if the first posn in this list hits another posn in the list */
-	boolean hitPosnInList(ILoP list);
+	boolean hitPosnInList(ILoP lop);
+	
+	public boolean hitPosn(Posn p);
 }
 
 
@@ -111,7 +113,12 @@ class MTLoP implements ILoP {
 	}
 
 	@Override
-	public boolean hitPosnInList(ILoP list) {
+	public boolean hitPosnInList(ILoP lop) {
+		return false;
+	}
+
+	@Override
+	public boolean hitPosn(Posn p) {
 		return false;
 	}
 }
@@ -198,21 +205,23 @@ class ConsLoP implements ILoP {
 		return 1 + this.rest.countSegs();
 	}
 
-	@Override
-	public boolean hitPosnInList(ILoP list) {
-		int i = 1;
-		
-		while(i < this.countSegs()) {
+	
+	public boolean hitPosnInList(ILoP lop) {
+		if (lop.isEmpty()) {
+	        return false;
+	    }
 
-			if (list.getFirst().distanceTo(list.getRest().getFirst()) < 30) {
-				return true;
-			} 
-			
-			i += 1;
-			list = this.rest;
-		}
-		
-		return false;
+	    if (lop.getRest().hitPosn(first)) {
+	        return true;
+	    } else {
+	        return this.hitPosnInList(lop.getRest());
+	    }
+	}
+	
+	//deterimines if the first has hit the given posn 
+	public boolean hitPosn(Posn p) 
+	{	
+		return p.distanceTo(this.first) < AFruit.SIZE;
 	}
     
     

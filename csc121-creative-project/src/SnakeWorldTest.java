@@ -68,6 +68,26 @@ class SnakeWorldTest {
     void testCountSegs() {
     	assertEquals(3, lstApp.countSegs());
     }
+    
+    @Test
+    void testHitPosn() {
+    	assertTrue(lst.hitPosn(new Posn(100, 120)));
+    	assertFalse(lst.hitPosn(new Posn(300, 300)));
+    }
+    
+    @Test
+    void testHitPosnInList() {
+        ILoP lop = new ConsLoP(new Posn(100, 100), new ConsLoP(new Posn(200, 200), mt));
+        ILoP lop2 = new ConsLoP(new Posn(100, 100), new ConsLoP(new Posn(100, 100), mt));
+        ILoP lop3 = new ConsLoP(new Posn(100, 100), new ConsLoP(new Posn(110, 110), mt));
+        ILoP lop4 = new ConsLoP(new Posn(100, 100), new ConsLoP(new Posn(200, 200), new ConsLoP(new Posn(110, 110), mt)));
+    
+		assertFalse(lop.hitPosnInList(lop));
+		assertTrue(lop2.hitPosnInList(lop2));
+		assertTrue(lop3.hitPosnInList(lop3));
+		assertTrue(lop4.hitPosnInList(lop4));
+	
+    }
 
 
 
