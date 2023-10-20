@@ -1,3 +1,7 @@
+/*
+ * Interface for the worlds of the game
+ */
+
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 

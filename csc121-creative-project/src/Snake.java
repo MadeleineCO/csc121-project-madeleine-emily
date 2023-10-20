@@ -25,6 +25,7 @@ public class Snake {
     	c.noFill();
     	c.stroke(62, 157, 74);
     	c.strokeWeight(AFruit.SIZE * 2 - 5); 
+    	c.strokeWeight(AFruit.SIZE); 
     	c.rect(0, 0, SnakeApp.WINDOW_SIZE, SnakeApp.WINDOW_SIZE);
     	c.noStroke(); 
     	c.strokeWeight(1); 

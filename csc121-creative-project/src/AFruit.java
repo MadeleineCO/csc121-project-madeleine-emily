@@ -35,6 +35,10 @@ abstract class AFruit implements IFruit {
 		return loc;
 	}
 
+	
+	
+	//auto-generated methods
+	
 	@Override
 	public String toString() {
 		return "AFruit [loc=" + loc + "]";
@@ -57,10 +61,5 @@ abstract class AFruit implements IFruit {
 		return Objects.equals(loc, other.loc);
 	}
 	
-	
 
-	
-		
-		
-	
 }

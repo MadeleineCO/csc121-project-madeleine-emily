@@ -9,6 +9,9 @@ public class Apple extends AFruit implements IFruit {
 		super(loc);
 	}
 
+	/*
+	 * Draws the apple in the game as a red square
+	 */
 	public PApplet draw(PApplet a) {
 		a.fill(255, 0, 0);
 		a.square((int) this.getLoc().getX(), (int) this.getLoc().getY(), SIZE);
@@ -28,6 +31,9 @@ public class Apple extends AFruit implements IFruit {
 
 	}
 
+	
+	//auto-generated method
+	
 	@Override
 	public String toString() {
 		return "Apple []";

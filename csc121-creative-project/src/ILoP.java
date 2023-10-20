@@ -33,19 +33,22 @@ public interface ILoP {
      */
     boolean isEmpty();
     
-    // !!! boolean hitAny(Posn p)
-    
-    
     //counts the number of posns in this list
     int countSegs();
 
     //determines if the first posn in this list hits another posn in the list */
 	boolean hitPosnInList(ILoP lop);
 	
+	/*
+	 * Determines if the first Posn in the list has hit the given Posn
+	 */
 	public boolean hitPosn(Posn p);
 }
 
 
+/*
+ * Represents an empty list of posns
+ */
 class MTLoP implements ILoP {
     
     
@@ -61,8 +64,7 @@ class MTLoP implements ILoP {
     }
     
     /**
-     * draws squares of the given size at each of the 
-     * posns in this list.
+     * draws squares of the given size at each of the posns in this list.
      */
     public PApplet drawSquares(PApplet c, int size) {
         return c;
@@ -82,7 +84,37 @@ class MTLoP implements ILoP {
         return true;
     }
 
+    /*
+     * Returns zero because there are no Posns in an empty list
+     */
+    @Override
+	public int countSegs() {
+		return 0;
+	}
 
+    /*
+     * Does not apply to an empty list
+     */
+	@Override
+	public ILoP getRest() {
+		return null;
+	}
+
+	/*
+	 * Returns false for this empty list
+	 */
+	@Override
+	public boolean hitPosnInList(ILoP lop) {
+		return false;
+	}
+
+	/*
+	 * Returns false for this empty list
+	 */
+	@Override
+	public boolean hitPosn(Posn p) {
+		return false;
+	}
     
     
     // auto-generated methods
@@ -101,29 +133,11 @@ class MTLoP implements ILoP {
     public String toString() {
         return "MTLoP []";
     }
-
-	@Override
-	public int countSegs() {
-		return 0;
-	}
-
-	@Override
-	public ILoP getRest() {
-		return null;
-	}
-
-	@Override
-	public boolean hitPosnInList(ILoP lop) {
-		return false;
-	}
-
-	@Override
-	public boolean hitPosn(Posn p) {
-		return false;
-	}
 }
 
-
+/*
+ * Represents a non-empty list of Posns
+ */
 class ConsLoP implements ILoP {
     private Posn first;
     private ILoP rest;
@@ -156,8 +170,7 @@ class ConsLoP implements ILoP {
     }
     
     /**
-     * draws squares of the given size at each of the 
-     * posns in this list.
+     * draws squares of the given size at each of the posns in this list.
      */
     public PApplet drawSquares(PApplet c, int size) {
         c.square(this.first.getX(), this.first.getY(), 30);
@@ -175,7 +188,38 @@ class ConsLoP implements ILoP {
         }
     }
     
+    /*
+     * Counts the number of segments in this list
+     */
+    @Override
+	public int countSegs() {
+		return 1 + this.rest.countSegs();
+	}
 
+	/*
+	 * Determines if the first of the list hits any of the other Posns in the list
+	 */
+	public boolean hitPosnInList(ILoP lop) {
+		if (lop.isEmpty()) {
+	        return false;
+	    }
+
+	    if (lop.getRest().hitPosn(first)) {
+	        return true;
+	    } else {
+	        return this.hitPosnInList(lop.getRest());
+	    }
+	}
+	
+	/*
+	 * Deterimines if the first Posn has hit the given Posn 
+	 */
+	public boolean hitPosn(Posn p) 
+	{	
+		return p.distanceTo(this.first) < AFruit.SIZE;
+	}
+    
+    
     // auto-generated
 
     @Override
@@ -200,30 +244,6 @@ class ConsLoP implements ILoP {
         return "ConsLoP [first=" + first + ", rest=" + rest + "]";
     }
 
-	@Override
-	public int countSegs() {
-		return 1 + this.rest.countSegs();
-	}
-
-	
-	public boolean hitPosnInList(ILoP lop) {
-		if (lop.isEmpty()) {
-	        return false;
-	    }
-
-	    if (lop.getRest().hitPosn(first)) {
-	        return true;
-	    } else {
-	        return this.hitPosnInList(lop.getRest());
-	    }
-	}
-	
-	//deterimines if the first has hit the given posn 
-	public boolean hitPosn(Posn p) 
-	{	
-		return p.distanceTo(this.first) < AFruit.SIZE;
-	}
-    
     
     
 }
