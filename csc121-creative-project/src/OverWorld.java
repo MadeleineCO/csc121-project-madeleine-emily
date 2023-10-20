@@ -1,6 +1,9 @@
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
+/*
+ * Represents the game over world 
+ */
 public class OverWorld implements IWorld {
 
 
@@ -46,8 +49,7 @@ public class OverWorld implements IWorld {
 			                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));
 			
 			return new SnakeWorld(new Snake(segs), apple, berry);
-		} else 
-		{
+		} else {
 			return this;
 		}
 		
