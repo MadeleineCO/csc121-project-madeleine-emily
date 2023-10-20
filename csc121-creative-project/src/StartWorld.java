@@ -35,7 +35,7 @@ public class StartWorld implements IWorld {
 					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
 			IFruit berry = new PoisonBerry(
-					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+					new Posn( (float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
 			Posn mid = new Posn(SnakeApp.WINDOW_SIZE/2, SnakeApp.WINDOW_SIZE/2);
 			PosnList segs = new PosnList().append(mid)

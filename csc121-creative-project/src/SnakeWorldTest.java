@@ -58,12 +58,6 @@ class SnakeWorldTest {
         assertEquals(lst, lstApp.dropLast());
     }
 
-//    @Test
-//    void testGetFirst() {
-//        assertEquals( new Posn(100, 120)  , new PosnList(lst).getHead() );
-//    }
-
-    
     @Test
     void testCountSegs() {
     	assertEquals(3, lstApp.countSegs());

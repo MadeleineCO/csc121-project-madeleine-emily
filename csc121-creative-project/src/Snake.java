@@ -24,7 +24,7 @@ public class Snake {
     PApplet draw(PApplet c) {
     	c.noFill();
     	c.stroke(62, 157, 74);
-    	c.strokeWeight(AFruit.SIZE); 
+    	c.strokeWeight(AFruit.SIZE * 2 - 5); 
     	c.rect(0, 0, SnakeApp.WINDOW_SIZE, SnakeApp.WINDOW_SIZE);
     	c.noStroke(); 
     	c.strokeWeight(1); 
@@ -92,7 +92,7 @@ public class Snake {
     }
     
     
-    
+    // auto-generated methods
     
 
     @Override

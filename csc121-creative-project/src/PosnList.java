@@ -10,17 +10,10 @@ public class PosnList {
         lop = new MTLoP();
     }
     
-    // package access only
+    /** package access only */
     PosnList(ILoP lop) {
         this.lop = lop;
     }
-
-    /**
-    boolean ranIntoSelf()
-    {
-    	lop.rest.hitAny(this.first); 
-    }
-    */
 
     /**
      * draws squares of the given size at each of the 
@@ -28,7 +21,7 @@ public class PosnList {
      */
     public PApplet drawSquares(PApplet c, int size) {
         return this.lop.drawSquares(c, size);
-    }
+    } 
 
     
     

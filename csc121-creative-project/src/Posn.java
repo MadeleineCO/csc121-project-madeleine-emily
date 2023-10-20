@@ -44,15 +44,15 @@ public class Posn {
         return new Posn( that.x - this.x,  that.y - this.y );
     }
     
-    // determine whether `this` point is within dx units to the right, 
-    //  and dy units below `that` point
+    /** determine whether `this` point is within dx units to the right, 
+      and dy units below `that` point */
     public boolean inRange(Posn that, double dx, double dy) {
         return this.x >= that.x && this.y >= that.y &&
                 this.x <= (that.x + dx) && this.y <= (that.y + dy);
     }
     
     
-    
+    // auto-generated methods
     
     @Override
     public int hashCode() {
@@ -68,7 +68,7 @@ public class Posn {
         if (getClass() != obj.getClass())
             return false;
         Posn other = (Posn) obj;
-        return x == other.x && y == other.y;
+        return x == other.x && y == other.y; 
     }
 
     @Override

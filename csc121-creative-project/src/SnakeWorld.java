@@ -82,6 +82,8 @@ public class SnakeWorld implements IWorld
     		return this; 
     	}
     }
+    
+    // auto-generated methods
 
 	@Override
 	public int hashCode() {
