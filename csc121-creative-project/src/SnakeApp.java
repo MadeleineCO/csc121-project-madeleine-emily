@@ -9,6 +9,7 @@ public class SnakeApp extends PApplet {
 	
 	private IWorld w;
 	public static final int WINDOW_SIZE = 600;
+	public static int SCORE;
 	
 	/* sets the size of the game board */
 	public void settings() {
