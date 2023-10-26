@@ -41,7 +41,8 @@ public class SnakeWorld implements IWorld
         this.b.draw(w);
         w.textSize(25); 
         w.fill(0); 
-        w.text("Score: " + SnakeApp.SCORE, 260, 40);
+        w.text("Score: " + SnakeApp.SCORE, 190, 40);
+        w.text("High Score: " + SnakeApp.HIGH_SCORE, 290, 40);
         return w;
     }
     
@@ -79,6 +80,9 @@ public class SnakeWorld implements IWorld
     {
     	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList() || b.hitBySnake(this.slimy.getLoc()))
     	{
+    		if (SnakeApp.SCORE > SnakeApp.HIGH_SCORE) {
+    			SnakeApp.HIGH_SCORE = SnakeApp.SCORE;
+    		}
     		SnakeApp.SCORE = 0;
     		return new OverWorld(); 
     		
