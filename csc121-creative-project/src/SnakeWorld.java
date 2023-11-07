@@ -116,10 +116,5 @@ public class SnakeWorld implements IWorld
 	}
 
 
-    
-
-
-
-
 
 }
