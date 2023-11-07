@@ -82,11 +82,11 @@ public class SnakeApp extends PApplet {
 		PApplet.runSketch(new String[] { "SnakeApp" }, new SnakeApp());
 		
 		while (true) {
-		try {
-			processFile();
-		} catch(FileNotFoundException e) {
-			System.out.println("High score file not found.");
-		}
+			try {
+				processFile();
+			} catch(FileNotFoundException e) {
+				System.out.println("High score file not found.");
+			}
 		
 		}
 		
