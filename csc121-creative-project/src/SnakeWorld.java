@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.*; 
 
 import processing.core.PApplet; 
 import processing.event.KeyEvent;
@@ -18,6 +19,8 @@ public class SnakeWorld implements IWorld
     
     public static final int DELAY_AMOUNT = 15;
     
+    public static boolean isGameOver = false; 
+    
     public static int SCORE; 
     public static int HIGH_SCORE; 
 
@@ -28,7 +31,11 @@ public class SnakeWorld implements IWorld
 				new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 						(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
         try {
-        	this.HIGH_SCORE = readHighScore(); 
+        	if (isGameOver) {
+        		updateHighScore(); 
+        	} else {
+        		HIGH_SCORE = readHighScore(); 
+        	}
 		} catch(FileNotFoundException e) {
 			System.out.println("High score file not found.");
 		}
@@ -51,8 +58,8 @@ public class SnakeWorld implements IWorld
         this.b.draw(w);
         w.textSize(25); 
         w.fill(0); 
-        w.text("Score: " + this.SCORE, 190, 40);
-        w.text("High Score: " + this.HIGH_SCORE, 290, 40);
+        w.text("Score: " + SCORE, 190, 40);
+        w.text("High Score: " + HIGH_SCORE, 290, 40);
         return w;
     }
     
@@ -90,11 +97,16 @@ public class SnakeWorld implements IWorld
     {
     	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList() || b.hitBySnake(this.slimy.getLoc()))
     	{
-    		if (this.SCORE > this.HIGH_SCORE) {
-    			this.HIGH_SCORE = this.SCORE;
+    		if (SCORE > HIGH_SCORE) {
+    			HIGH_SCORE = SCORE;
     		}
-    		this.SCORE = 0;
+    		SCORE = 0;
+    		
+    		isGameOver = true; 
+    		
     		return new OverWorld();  
+    		
+    		
     		
     	} else { 
     		return this;  
@@ -114,12 +126,16 @@ public class SnakeWorld implements IWorld
     		}
     	}
     	
+    	sc.close(); 
     	return h; 
     }
     
     /* writes and updates the high score file */
-    public void updateHighScore() {
+    public void updateHighScore() throws FileNotFoundException{
+    	PrintWriter pw = new PrintWriter(new File("HighScoreFile"));
+    	pw.println(HIGH_SCORE); 
     	
+    	pw.close(); 
     }
     
     // auto-generated methods

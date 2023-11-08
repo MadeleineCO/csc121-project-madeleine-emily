@@ -1,8 +1,5 @@
-import java.io.*;
 import processing.core.*;
 import processing.event.KeyEvent; 
-import java.util.*;
-import java.io.File;
 
 /**
  * Provides the scaffolding to launch a Processing application
@@ -11,8 +8,6 @@ public class SnakeApp extends PApplet {
 
 	private IWorld w;
 	public static final int WINDOW_SIZE = 600;
-	//public static int SCORE;
-	//public static int HIGH_SCORE; 
 
 
 

@@ -6,7 +6,6 @@ public class Snake {
                          the head is always the first segment */
     private Posn dir;   /* represents the direction of movement */
     private int moveDelay; /* number of ticks the snake should wait before actually moving again */
-    private int score;
     
     
     public Snake(PosnList segs, Posn dir, int moveDelay) {
