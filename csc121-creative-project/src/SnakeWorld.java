@@ -123,7 +123,7 @@ public class SnakeWorld implements IWorld
 	    		int i = sc.nextInt();
 	    		if (i > h) {
 	    			h = i; 
-	    		}
+	    		}  
 	    	}
 	    	
 	    	sc.close(); 
