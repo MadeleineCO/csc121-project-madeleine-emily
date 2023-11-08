@@ -22,7 +22,7 @@ public class Apple extends AFruit implements IFruit {
 	/* if the snake eats the apple, then the apple updates to a random location */
 	public IFruit move(Snake s) {
 		if (this.hitBySnake(s.getLoc())) {
-			SnakeApp.SCORE++;
+			SnakeWorld.SCORE++;
 			return new Apple(
 					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));

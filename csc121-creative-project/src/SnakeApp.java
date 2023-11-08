@@ -11,8 +11,8 @@ public class SnakeApp extends PApplet {
 
 	private IWorld w;
 	public static final int WINDOW_SIZE = 600;
-	public static int SCORE;
-	public static int HIGH_SCORE; 
+	//public static int SCORE;
+	//public static int HIGH_SCORE; 
 
 
 
@@ -40,7 +40,7 @@ public class SnakeApp extends PApplet {
 	}
 
 
-
+ /*
 	public static boolean processFile() throws FileNotFoundException 
 	{
 		File hFile = new File("HighScoreFile");
@@ -69,7 +69,7 @@ public class SnakeApp extends PApplet {
 		sc.close();
 		
 		return true; 
-	}    
+	}    */
 
 
 	/* runs the SnakeWorld */
@@ -84,15 +84,6 @@ public class SnakeApp extends PApplet {
 		
 		
 		PApplet.runSketch(new String[] { "SnakeApp" }, new SnakeApp());
-		
-		while (true) {
-			try {
-				processFile();
-			} catch(FileNotFoundException e) {
-				System.out.println("High score file not found.");
-			}
-		
-		}
 		
 	}
 

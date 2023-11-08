@@ -1,4 +1,6 @@
-import java.util.Objects;
+import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import processing.core.PApplet; 
 import processing.event.KeyEvent;
@@ -15,6 +17,9 @@ public class SnakeWorld implements IWorld
     public static final Posn RIGHT = new Posn(30, 0);
     
     public static final int DELAY_AMOUNT = 15;
+    
+    public static int SCORE; 
+    public static int HIGH_SCORE; 
 
     public SnakeWorld(Snake slimy, IFruit a) {
         this.slimy = slimy;
@@ -22,6 +27,11 @@ public class SnakeWorld implements IWorld
         this.b = new Apple(
 				new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 						(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
+        try {
+        	this.HIGH_SCORE = readHighScore(); 
+		} catch(FileNotFoundException e) {
+			System.out.println("High score file not found.");
+		}
     }
     
     public SnakeWorld(Snake slimy, IFruit a, IFruit b) {
@@ -41,8 +51,8 @@ public class SnakeWorld implements IWorld
         this.b.draw(w);
         w.textSize(25); 
         w.fill(0); 
-        w.text("Score: " + SnakeApp.SCORE, 190, 40);
-        w.text("High Score: " + SnakeApp.HIGH_SCORE, 290, 40);
+        w.text("Score: " + this.SCORE, 190, 40);
+        w.text("High Score: " + this.HIGH_SCORE, 290, 40);
         return w;
     }
     
@@ -80,15 +90,36 @@ public class SnakeWorld implements IWorld
     {
     	if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList() || b.hitBySnake(this.slimy.getLoc()))
     	{
-    		if (SnakeApp.SCORE > SnakeApp.HIGH_SCORE) {
-    			SnakeApp.HIGH_SCORE = SnakeApp.SCORE;
+    		if (this.SCORE > this.HIGH_SCORE) {
+    			this.HIGH_SCORE = this.SCORE;
     		}
-    		SnakeApp.SCORE = 0;
-    		return new OverWorld(); 
+    		this.SCORE = 0;
+    		return new OverWorld();  
     		
-    	} else {
-    		return this; 
+    	} else { 
+    		return this;  
+    	} 
+    }
+    
+    /* reads the high score file */ 
+    public int readHighScore() throws FileNotFoundException {
+    	File hFile = new File("HighScoreFile");
+
+		Scanner sc = new Scanner(hFile); 
+		
+    	int h = 0; 
+    	while (sc.hasNext()) {
+    		if (sc.nextInt() > h) {
+    			h = sc.nextInt(); 
+    		}
     	}
+    	
+    	return h; 
+    }
+    
+    /* writes and updates the high score file */
+    public void updateHighScore() {
+    	
     }
     
     // auto-generated methods
