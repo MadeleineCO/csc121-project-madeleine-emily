@@ -30,21 +30,16 @@ public class SnakeWorld implements IWorld
         this.b = new Apple(
 				new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 						(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
-        try {
-        	if (isGameOver) {
-        		updateHighScore(); 
-        	} else {
-        		HIGH_SCORE = readHighScore(); 
-        	}
-		} catch(FileNotFoundException e) {
-			System.out.println("High score file not found.");
-		}
+		HIGH_SCORE = readHighScore(); 
+
     }
     
     public SnakeWorld(Snake slimy, IFruit a, IFruit b) {
         this.slimy = slimy;
         this.a = a;
         this.b = b;
+		HIGH_SCORE = readHighScore(); 
+
     }
 
     /**
@@ -102,7 +97,9 @@ public class SnakeWorld implements IWorld
     		}
     		SCORE = 0;
     		
-    		isGameOver = true; 
+    		isGameOver = true;
+    		
+    		updateHighScore(); 
     		
     		return new OverWorld();  
     		
@@ -114,28 +111,41 @@ public class SnakeWorld implements IWorld
     }
     
     /* reads the high score file */ 
-    public int readHighScore() throws FileNotFoundException {
-    	File hFile = new File("HighScoreFile");
+    public int readHighScore() {
+        try {
 
-		Scanner sc = new Scanner(hFile); 
-		
-    	int h = 0; 
-    	while (sc.hasNext()) {
-    		if (sc.nextInt() > h) {
-    			h = sc.nextInt(); 
-    		}
-    	}
-    	
-    	sc.close(); 
-    	return h; 
+	    	File hFile = new File("HighScoreFile");
+	
+			Scanner sc = new Scanner(hFile); 
+			
+	    	int h = 0; 
+	    	while (sc.hasNextInt()) {
+	    		int i = sc.nextInt();
+	    		if (i > h) {
+	    			h = i; 
+	    		}
+	    	}
+	    	
+	    	sc.close(); 
+	    	return h; 
+        } catch(FileNotFoundException e) {
+        	System.out.println("High score file not found.");
+        	return 0;
+        }
+
     }
     
     /* writes and updates the high score file */
-    public void updateHighScore() throws FileNotFoundException{
-    	PrintWriter pw = new PrintWriter(new File("HighScoreFile"));
-    	pw.println(HIGH_SCORE); 
-    	
-    	pw.close(); 
+    public void updateHighScore() {
+    	try {
+	    	PrintWriter pw = new PrintWriter(new File("HighScoreFile"));
+	    	pw.println(HIGH_SCORE); 
+	    	
+	    	pw.close(); 
+        } catch(FileNotFoundException e) {
+        	System.out.println("High score file not found.");
+        }
+
     }
     
     // auto-generated methods
