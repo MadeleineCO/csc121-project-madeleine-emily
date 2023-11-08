@@ -48,6 +48,10 @@ public class SnakeApp extends PApplet {
 		Scanner sc = new Scanner(hFile); 
 		PrintWriter pw = new PrintWriter(hFile);
 		
+		if (sc.hasNext()) {
+			HIGH_SCORE = sc.nextInt();
+		}
+		
 		while (sc.hasNext()) {
 			int i = sc.nextInt();
 			
