@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.event.KeyEvent;
@@ -40,11 +42,15 @@ public class StartWorld implements IWorld {
 			IFruit berry = new PoisonBerry(
 					new Posn( (float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
 							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
+			
+			ArrayList<IFruit> berryList = new ArrayList<IFruit>();
+			berryList.add(berry);
+			
 			Posn mid = new Posn(SnakeApp.WINDOW_SIZE/2, SnakeApp.WINDOW_SIZE/2);
 			PosnList segs = new PosnList().append(mid)
 			                    .append(mid.translate(SnakeWorld.LEFT))
 			                    .append(mid.translate(SnakeWorld.LEFT).translate(SnakeWorld.LEFT));
-			return new SnakeWorld(new Snake(segs), apple, berry);
+			return new SnakeWorld(new Snake(segs), apple, berryList);
 		} else 
 		{
 			return this;
