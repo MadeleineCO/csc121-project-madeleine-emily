@@ -39,12 +39,8 @@ public class OverWorld implements IWorld {
 		if (kev.getKey() == ' ')
 		{
 			//(Math.random() * ((max - min) + 1)) + min;
-			IFruit apple = new Apple(
-					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
-							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
-			IFruit berry = new PoisonBerry(
-					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
-							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
+			IFruit apple = new Apple(Posn.randomPosn());
+			IFruit berry = new PoisonBerry(Posn.randomPosn());
 			
 			ArrayList<IFruit> berryList = new ArrayList<IFruit>();
 			berryList.add(berry);

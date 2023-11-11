@@ -14,7 +14,6 @@ public class SnakeWorld implements IWorld
 	private Snake slimy;
 	private IFruit a;
 	private ArrayList<IFruit> bList;
-	private int poisonBerriesAdded = 0;
 
 
 	public static final Posn UP = new Posn(0, -30);
@@ -28,16 +27,11 @@ public class SnakeWorld implements IWorld
 
 	public static int SCORE; 
 	public static int HIGH_SCORE; 
+	
+	private static int counter = 0;
 
-	//	public SnakeWorld(Snake slimy, IFruit a) {
-	//		this.slimy = slimy;
-	//		this.a = a;
-	////		this.bList = new Apple(
-	////				new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
-	////						(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
-	//		HIGH_SCORE = readHighScore(); 
-	//
-	//	}
+
+
 
 	public SnakeWorld(Snake slimy, IFruit a, ArrayList<IFruit> bList) {
 		this.slimy = slimy;
@@ -69,7 +63,7 @@ public class SnakeWorld implements IWorld
 		return w;
 	}
 
-	/* updates the SnakeWorld by moving the snake and the apple */
+	/* updates the SnakeWorld by moving the snake and the apple as well as adding poison berries every five score points */
 	public IWorld update() {
 		IFruit a2 = this.a.move(slimy);
 
@@ -77,11 +71,14 @@ public class SnakeWorld implements IWorld
 			b = b.move(slimy);
 		}
 
-		addPoisonBerry();
-
+		while (counter < (SCORE / 5)) {
+			addPoisonBerry();
+			counter++;
+		}
 
 		return new SnakeWorld(this.slimy.move(this.a), a2, bList);
 	}
+
 
 	/* determines which arrow key has been pressed and creates a new SnakeWorld to reflect a KeyEvent */
 	public IWorld keyPressed(KeyEvent kev) {
@@ -115,28 +112,23 @@ public class SnakeWorld implements IWorld
 				}
 
 				SCORE = 0;
-
 				isGameOver = true;
-
 				updateHighScore(); 
-
+				counter = 0;
 				return new OverWorld();
 			}
-		}
-
-		if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList())
-		{
+			
+		} if (this.slimy.hitWall() || slimy.getSegs().hitPosnInList()) {
 			if (SCORE > HIGH_SCORE) {
 				HIGH_SCORE = SCORE;
 			}
 
 			SCORE = 0;
-
 			isGameOver = true;
-
 			updateHighScore(); 
-
+			counter = 0;
 			return new OverWorld();  
+			
 		} else { 
 			return this;  
 		} 
@@ -180,19 +172,21 @@ public class SnakeWorld implements IWorld
 
 	}
 
+
 	/*
 	 * adds a new poison berry every five score points
 	 */
 	public void addPoisonBerry() {
 
-		if (SCORE % 5 == 0 && SCORE != 0 && poisonBerriesAdded < SCORE / 5) {
-			IFruit berry = new PoisonBerry(
-					new Posn( (float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
-							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
-			bList.add(berry);
-			poisonBerriesAdded++;
-		} 
-	}  
+		if (SCORE % 5 == 0 && SCORE != 0) 
+		{
+			IFruit berry = new PoisonBerry(Posn.randomPosn());
+
+			for (int i = 0; i < (SCORE / 5); i++) {
+				bList.add(berry);
+			}
+		}
+	}
 
 
 

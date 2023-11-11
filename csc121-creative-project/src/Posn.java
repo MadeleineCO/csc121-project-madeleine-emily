@@ -51,6 +51,14 @@ public class Posn {
                 this.x <= (that.x + dx) && this.y <= (that.y + dy);
     }
     
+    /*
+     * Produces a random Posn on the game board
+     */
+    public static Posn randomPosn() {
+    	return new Posn( (float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
+				(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60);
+    }
+    
     
     // auto-generated methods
     

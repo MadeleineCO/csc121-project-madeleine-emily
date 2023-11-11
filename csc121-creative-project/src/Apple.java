@@ -23,9 +23,7 @@ public class Apple extends AFruit implements IFruit {
 	public IFruit move(Snake s) {
 		if (this.hitBySnake(s.getLoc())) {
 			SnakeWorld.SCORE++;
-			return new Apple(
-					new Posn( (float)  (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60, 
-							(float) (Math.random() * ((SnakeApp.WINDOW_SIZE - 120) + 1)) + 60));
+			return new Apple(Posn.randomPosn());
 		}
 		
 		
